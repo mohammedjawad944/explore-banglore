@@ -1,5 +1,5 @@
 // Service Worker for Explore Bangalore PWA
-const CACHE_NAME = 'explore-blr-v1';
+const CACHE_NAME = 'explore-blr-v2';
 const ASSETS_TO_CACHE = [
     './',
     './app.html',
