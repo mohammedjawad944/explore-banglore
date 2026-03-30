@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Bangalore | Premium Tourism</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <style>
+        :root {
+            --bg-base: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --accent-gold: #f0a500;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --zone-north: #7c3aed;
+            --zone-south: #0d9488;
+            --zone-east: #ea580c;
+            --zone-west: #db2777;
+            --zone-central: #f0a500;
+            --zone-daytrip: #16a34a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* AUTHENTICATION GATE */
+        #auth-gate {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: var(--bg-base); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            padding: 2rem;
+        }
+
+        .auth-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 3rem; border-radius: 20px; width: 100%; max-width: 420px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center;
+        }
+
+        .auth-card h1 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 0.5rem; }
+        .auth-card p { color: var(--text-muted); margin-bottom: 2rem; }
+
+        .auth-input {
+            width: 100%; padding: 12px; margin-bottom: 1rem;
+            background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+            color: white; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+            outline: none; transition: border-color 0.3s;
+        }
+        .auth-input:focus { border-color: var(--accent-gold); }
+
+        .btn {
+            width: 100%; padding: 12px; border: none; border-radius: 8px;
+            font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer;
+            transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .btn-primary { background: var(--accent-gold); color: #000; }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); margin-top: 1rem; }
+        .btn-outline:hover { background: rgba(240, 165, 0, 0.1); }
+
+        .auth-divider { display: flex; align-items: center; margin: 1.5rem 0; color: var(--text-muted); font-size: 0.9rem;}
+        .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); margin: 0 10px; }
+
+        .form-message { display:none; margin-bottom: 1rem; padding: 10px; border-radius: 8px; font-size: 0.9rem; }
+        .form-message.error { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.3); display: block; }
+        .form-message.success { background: rgba(34,197,94,0.2); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); display: block; }
+
+        .spinner {
+            width: 20px; height: 20px; border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: #000; border-radius: 50%;
+            animation: spin 1s linear infinite; display: none;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* MAIN APP LAYOUT */
+        #main-app { display: none; }
+
+        header {
+            background: rgba(26,26,46,0.8); backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 100;
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-brand { font-size: 1.5rem; color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; }
+        
+        .header-controls { display: flex; align-items: center; gap: 1.5rem; }
+        
+        .ai-toggle { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-muted); font-weight: 500;}
+        .switch { position: relative; width: 44px; height: 24px; background: #333; border-radius: 24px; transition: 0.3s; }
+        .switch::after { content:''; position: absolute; top:2px; left:2px; width:20px; height:20px; background:white; border-radius:50%; transition:0.3s; }
+        input:checked + .switch { background: var(--accent-gold); }
+        input:checked + .switch::after { transform: translateX(20px); }
+        input[type="checkbox"] { display: none; }
+        
+        .logout-btn { background:none; border:none; color: var(--text-muted); cursor:pointer; font-family:'DM Sans'; transition: 0.3s; font-size: 1rem;}
+        .logout-btn:hover { color: white; }
+
+        /* MAP SECTION */
+        .map-section { padding: 2rem 5%; max-width: 1400px; margin: 0 auto; position: relative;}
+        #map { width: 100%; height: 450px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); z-index: 1; }
+        
+        .map-overlay-btn {
+            position: absolute; top: 3.5rem; right: 6%; z-index: 400;
+            background: var(--accent-gold); color: black; border: none; padding: 10px 20px;
+            border-radius: 8px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: 0.3s; font-family: 'DM Sans', sans-serif;
+        }
+        .map-overlay-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(240, 165, 0, 0.4); }
+
+        /* LEAFLET POPUP OVERRIDES */
+        .leaflet-popup-content-wrapper { background: var(--bg-card); color: white; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);}
+        .leaflet-popup-tip { background: var(--bg-card); }
+        .leaflet-popup-content strong { color: var(--accent-gold); display: block; margin-bottom: 4px; font-family: 'Playfair Display'; font-size:1.1rem;}
+
+        /* FILTERS */
+        .filters {
+            padding: 0 5%; max-width: 1400px; margin: 1rem auto 2rem;
+            display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+        }
+        .filter-input {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: white; padding: 12px; border-radius: 8px; outline: none; font-family: 'DM Sans';
+            flex: 1; min-width: 200px;
+        }
+        .filter-input:focus { border-color: var(--accent-gold); }
+        .filter-select {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: white; padding: 12px; border-radius: 8px; outline: none; font-family: 'DM Sans';
+        }
+        .filter-select option { background: var(--bg-card); color: white; }
+        
+        .clear-filters { background: transparent; color: var(--text-muted); border: 1px solid var(--text-muted); padding: 12px 20px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .clear-filters:hover { background: rgba(255,255,255,0.05); color: white; }
+
+        .results-count { padding: 0 5%; max-width: 1400px; margin: 0 auto 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* GRID & CARDS */
+        .places-grid {
+            padding: 0 5% 4rem; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        @media (max-width: 1024px) { .places-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .places-grid { grid-template-columns: 1fr; } .header-controls { flex-direction: column; gap: 0.5rem; align-items: flex-end;} }
+
+        .place-card {
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s; position: relative;
+        }
+        .place-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+
+        .card-img-wrap { position: relative; height: 220px; overflow: hidden; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .place-card:hover .card-img { transform: scale(1.05); }
+
+        .pulse-badge {
+            position: absolute; top: 1rem; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #FF007A, #7928CA); color: white;
+            padding: 6px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; z-index: 2;
+            animation: pulse 2s infinite; display: flex; align-items: center; gap: 5px; white-space: nowrap;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,0,122,0.4); } 70% { box-shadow: 0 0 0 10px rgba(255,0,122,0); } 100% { box-shadow: 0 0 0 0 rgba(255,0,122,0); } }
+
+        .zone-badge { position: absolute; top: 1rem; right: 1rem; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: white; display: inline-block; z-index: 2; }
+        .zone-North { background: var(--zone-north); } .zone-South { background: var(--zone-south); }
+        .zone-East { background: var(--zone-east); } .zone-West { background: var(--zone-west); }
+        .zone-Central { background: var(--zone-central); } .zone-DayTrip { background: var(--zone-daytrip); }
+
+        .ai-verdict-badge { position: absolute; bottom: 1rem; right: 1rem; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; z-index: 2; }
+        .ai-good { background: #16a34a; color: white; }
+        .ai-okay { background: #2563eb; color: white; }
+        .ai-warn { background: #ea580c; color: white; }
+
+        .card-content { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+        .card-category { font-size: 0.8rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .card-title { font-size: 1.3rem; margin-bottom: 0.5rem; color: white; }
+        
+        .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-muted); }
+        .rating { color: #fbbf24; font-weight: 700; }
+        
+        .card-actions { margin-top: auto; display: flex; gap: 0.5rem; }
+        .btn-view { flex: 1; background: rgba(255,255,255,0.1); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 500;}
+        .btn-view:hover { background: rgba(255,255,255,0.2); }
+        .btn-uber-sm { background: black; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 10px 15px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: 0.3s;}
+        .btn-uber-sm:hover { background: #222; border-color: rgba(255,255,255,0.4); }
+
+        /* DETAIL MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            z-index: 10000; display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        
+        .modal-card {
+            background: var(--bg-card); width: 90%; max-width: 600px;
+            border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+            transform: translateY(20px); transition: transform 0.3s; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; max-height: 90vh;
+        }
+        .modal-overlay.active .modal-card { transform: translateY(0); }
+
+        .modal-header { position: relative; height: 250px; }
+        .modal-img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-close {
+            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); border: none;
+            color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; font-size: 1.2rem; transition: 0.3s;
+        }
+        .modal-close:hover { background: rgba(0,0,0,0.8); }
+
+        .modal-body-content { padding: 2rem; overflow-y: auto; }
+        .modal-title { font-size: 2rem; margin-bottom: 0.5rem; color: var(--accent-gold); }
+        .modal-meta-strip { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.95rem; flex-wrap: wrap;}
+        .modal-desc { line-height: 1.8; margin-bottom: 2rem; font-size: 1.05rem; }
+        
+        .uber-box { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.2); }
+        .uber-box-title { font-weight: 700; margin-bottom: 1rem; color: white; display: flex; justify-content: space-between;}
+        .fare-est { color: var(--accent-gold); font-family: 'DM Sans';}
+        .btn-uber-lg {
+            display: block; width: 100%; background: black; color: white; text-align: center;
+            padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; font-family: 'DM Sans';
+        }
+        .btn-uber-lg:hover { background: #222; }
+
+    </style>
+</head>
+<body>
+
+    <!-- AUTH SCREEN -->
+    <div id="auth-gate">
+        <div class="auth-card">
+            <h1>Explore Bangalore</h1>
+            <p id="auth-subtitle">Log in to discover the best of the city.</p>
+            
+            <div id="form-msg" class="form-message"></div>
+
+            <form id="auth-form" onsubmit="handleLocalAuth(event)">
+                <div id="signup-fields" style="display:none;">
+                    <input type="text" id="auth-name" class="auth-input" placeholder="Full Name">
+                </div>
+                <input type="email" id="auth-email" class="auth-input" placeholder="Email Address" required>
+                <input type="password" id="auth-password" class="auth-input" placeholder="Password (min 6 chars)" required>
+                
+                <button type="submit" class="btn btn-primary" id="auth-submit-btn">
+                    <span id="auth-btn-text">log in</span>
+                    <div class="spinner" id="auth-spinner"></div>
+                </button>
+            </form>
+
+            <a href="#" onclick="handleForgotPassword(event)" style="display:inline-block; margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Forgot Password?</a>
+
+            <div class="auth-divider">OR</div>
+
+            <div id="g_id_onload"
+                data-client_id="580440836648-vk7cajugc9fntcc484j7gce8m68ao79p.apps.googleusercontent.com"
+                data-callback="handleGoogleLogin"
+                data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="filled_black" data-text="signin_with" data-size="large" data-logo_alignment="left" style="display:flex; justify-content:center;"></div>
+
+            <button type="button" class="btn btn-outline" id="toggle-auth-mode" onclick="toggleAuthMode()">
+                Don't have an account? Sign Up
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP SCREEN -->
+    <div id="main-app">
+        <header>
+            <div class="header-brand">
+                <i class="fas fa-compass"></i> Explore Bangalore
+            </div>
+            <div class="header-controls">
+                <label class="ai-toggle">
+                    <input type="checkbox" id="ai-toggle-switch" onchange="renderGrid()">
+                    <div class="switch"></div>
+                    ✨ AI Recommendations
+                </label>
+                <button onclick="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </header>
+
+        <section class="map-section">
+            <button class="map-overlay-btn" onclick="locateUser()"><i class="fas fa-location-crosshairs"></i> Use My Location</button>
+            <div id="map"></div>
+        </section>
+
+        <section class="filters">
+            <input type="text" id="search-input" class="filter-input" placeholder="🔍 Search places..." onkeyup="renderGrid()">
+            
+            <select id="filter-category" class="filter-select" onchange="renderGrid()">
+                <option value="All">All Categories</option>
+                <option value="Malls">Malls</option>
+                <option value="Temples">Temples</option>
+                <option value="Church">Church</option>
+                <option value="Parks">Parks</option>
+                <option value="Museums">Museums</option>
+                <option value="Lakes">Lakes</option>
+                <option value="Palaces">Palaces</option>
+                <option value="Markets">Markets</option>
+                <option value="Attractions">Attractions</option>
+            </select>
+
+            <select id="filter-zone" class="filter-select" onchange="renderGrid()">
+                <option value="All">All Zones</option>
+                <option value="North">North</option>
+                <option value="South">South</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+                <option value="Central">Central</option>
+                <option value="Day Trip">Day Trip</option>
+            </select>
+
+            <select id="sort-select" class="filter-select" onchange="renderGrid()">
+                <option value="default">Sort By: Default</option>
+                <option value="rating">Highest Rating</option>
+                <option value="distance">Nearest Distance</option>
+                <option value="az">Name A - Z</option>
+            </select>
+
+            <button class="clear-filters" onclick="clearFilters()">Clear Filters</button>
+        </section>
+
+        <div class="results-count" id="results-count">Showing 35 of 35 places</div>
+        <div class="places-grid" id="places-grid"></div>
+
+    </div>
+
+    <!-- DETAIL MODAL -->
+    <div id="detail-modal" class="modal-overlay" onclick="handleModalClick(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <img src="" id="modal-img" class="modal-img" alt="Place">
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body-content">
+                <h2 class="modal-title" id="modal-title">Name</h2>
+                <div class="modal-meta-strip">
+                    <span id="modal-cat"><i class="fas fa-tag"></i> Category</span>
+                    <span id="modal-rating"><i class="fas fa-star" style="color:gold;"></i> 4.5</span>
+                    <span id="modal-fee"><i class="fas fa-ticket-alt"></i> Free</span>
+                    <span id="modal-dist" style="color:var(--accent-gold); font-weight:700; display:none;"><i class="fas fa-map-marker-alt"></i> 5.2 km away</span>
+                </div>
+                <p class="modal-desc" id="modal-desc">Description</p>
+
+                <div class="uber-box">
+                    <div class="uber-box-title">
+                        <span><i class="fab fa-uber"></i> Ride with Uber</span>
+                        <span class="fare-est" id="modal-fare">Est. Auto: ₹--- | Cab: ₹---</span>
+                    </div>
+                    <a href="#" id="modal-uber-link" class="btn-uber-lg" target="_blank">Book Ride</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+const places = [
+    {
+        id: 1, name: "Lalbagh Botanical Garden", category: "Parks", zone: "South",
+        lat: 12.9507, lng: 77.5848, rating: 4.6, entryFee: 25,
+        description: "A historic 240-acre garden commissioned by Hyder Ali in 1760. Famous for its stunning glasshouse and extensive collection of tropical plants.",
+        image: "https://images.unsplash.com/photo-1544645224-bca2321287ee?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 2, name: "Cubbon Park", category: "Parks", zone: "Central",
+        lat: 12.9779, lng: 77.5952, rating: 4.5, entryFee: 0,
+        description: "The 'Lung Area' of Bangalore, spreading over 300 acres of lush greenery right in the heart of the city. Perfect for morning walks and picnics.",
+        image: "https://images.unsplash.com/photo-1636611084206-8d197db3cde9?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 3, name: "Bangalore Palace", category: "Palaces", zone: "Central",
+        lat: 12.9988, lng: 77.5921, rating: 4.4, entryFee: 250,
+        description: "A beautiful Tudor-style palace inspired by Windsor Castle. It features magnificent wood carvings, floral motifs, and sprawling manicured grounds.",
+        image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 4, name: "Tipu Sultan's Summer Palace", category: "Palaces", zone: "Central",
+        lat: 12.9594, lng: 77.5738, rating: 4.2, entryFee: 20,
+        description: "An elegant teakwood palace that served as the summer residence of the Mysore ruler. Known for its exquisite Indo-Islamic architecture and historic murals.",
+        image: "https://images.unsplash.com/photo-1623594830172-e1cbcca2c39e?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 5, name: "ISKCON Temple", category: "Temples", zone: "North",
+        lat: 13.0098, lng: 77.5511, rating: 4.8, entryFee: 0,
+        description: "One of the largest ISKCON temples in the world, situated on Hare Krishna Hill. A stunning modern temple offering deep spiritual tranquility and grand architecture.",
+        image: "https://images.unsplash.com/photo-1566427352358-1f107b30c313?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 6, name: "Bull Temple", category: "Temples", zone: "South",
+        lat: 12.9419, lng: 77.5681, rating: 4.5, entryFee: 0,
+        description: "An iconic 16th-century temple housing one of the largest monolithic statues of Nandi (the sacred bull) in the world. Built in the Dravidian architectural style.",
+        image: "https://images.unsplash.com/photo-1600008518331-fc3caced95df?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 7, name: "Ulsoor Lake", category: "Lakes", zone: "East",
+        lat: 12.9816, lng: 77.6190, rating: 4.1, entryFee: 0,
+        description: "One of Bangalore's oldest and most renowned lakes, spanning over 120 acres. Features multiple picturesque islands and offers boating experiences.",
+        image: "https://images.unsplash.com/photo-1596489397631-97ea2cc367a7?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 8, name: "UB City Mall", category: "Malls", zone: "Central",
+        lat: 12.9716, lng: 77.5961, rating: 4.6, entryFee: 0,
+        description: "India's first luxury shopping mall. A stunning architectural marvel offering the finest premium brands, open-air dining, and elite rooftop lounges.",
+        image: "https://images.unsplash.com/photo-1519501509177-3eaaa9f88cce?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 9, name: "Phoenix Marketcity", category: "Malls", zone: "East",
+        lat: 12.9961, lng: 77.6966, rating: 4.5, entryFee: 0,
+        description: "The largest mall in Bangalore offering endless shopping, a massive food court, gaming zones, and frequent live performances in its central courtyard.",
+        image: "https://images.unsplash.com/photo-1567118128221-39656fb33af4?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 10, name: "Wonderla Amusement Park", category: "Attractions", zone: "Day Trip",
+        lat: 12.8343, lng: 77.4010, rating: 4.7, entryFee: 1200,
+        description: "India's leading amusement park featuring over 60 thrilling high-adrenaline rides, a spectacular water park, and endless family entertainment.",
+        image: "https://images.unsplash.com/photo-1510007897148-7357c9613ed8?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 11, name: "Bannerghatta National Park", category: "Parks", zone: "South",
+        lat: 12.8009, lng: 77.5777, rating: 4.3, entryFee: 260,
+        description: "A popular destination for wildlife photography and safaris. Features a tiger and lion reserve, a beautiful butterfly conservatory, and a dedicated zoo.",
+        image: "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 12, name: "Nandi Hills", category: "Attractions", zone: "Day Trip",
+        lat: 13.3702, lng: 77.6835, rating: 4.5, entryFee: 10,
+        description: "An ancient hill fortress providing breathtaking sunrise views over rolling clouds. Features historical temples and the tragic 'Tipu's Drop' cliff point.",
+        image: "https://images.unsplash.com/photo-1596707323214-41cecfdf3cd3?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 13, name: "Mysore Palace", category: "Palaces", zone: "Day Trip",
+        lat: 12.3052, lng: 76.6552, rating: 4.9, entryFee: 100,
+        description: "One of India's most majestic palaces, blending Hindu, Muslim, Rajput, and Gothic styles. Visually stunning, especially when fully illuminated on Sundays.",
+        image: "https://images.unsplash.com/photo-1600021644781-42ab22409747?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 14, name: "Vidhana Soudha", category: "Attractions", zone: "Central",
+        lat: 12.9796, lng: 77.5906, rating: 4.6, entryFee: 0,
+        description: "The seat of the state legislature of Karnataka. A magnificent white stone building showcasing neo-Dravidian architecture. A grand symbol of the city.",
+        image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 15, name: "Commercial Street", category: "Markets", zone: "Central",
+        lat: 12.9822, lng: 77.6083, rating: 4.3, entryFee: 0,
+        description: "A vibrant, busy labyrinth of streets famous for clothes, jewelry, and incredible street food. A paradise for bargain hunters and lively evening strolls.",
+        image: "https://images.unsplash.com/photo-1555529733-0e670560f7e1?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 16, name: "Brigade Road", category: "Markets", zone: "Central",
+        lat: 12.9738, lng: 77.6074, rating: 4.4, entryFee: 0,
+        description: "One of the biggest commercial centers and busiest shopping areas in Bangalore. Famous for branded showrooms, pubs, and its dazzling New Year celebrations.",
+        image: "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 17, name: "Indiranagar", category: "Restaurants", zone: "East",
+        lat: 12.9719, lng: 77.6412, rating: 4.7, entryFee: 0,
+        description: "The premiere dining and nightlife hub of Bangalore. Features tree-lined boulevards packed with the city's finest craft breweries, cafes, and elite restaurants.",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 18, name: "Koramangala", category: "Restaurants", zone: "South",
+        lat: 12.9279, lng: 77.6271, rating: 4.6, entryFee: 0,
+        description: "A cosmopolitan neighborhood booming with startup culture. Extremely popular for its sheer density of diverse eateries, cozy cafes, and lounges.",
+        image: "https://images.unsplash.com/photo-1525640788966-69bdb028aa73?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 19, name: "Jawaharlal Nehru Planetarium", category: "Museums", zone: "North",
+        lat: 12.9849, lng: 77.5896, rating: 4.2, entryFee: 50,
+        description: "An educational landmark hosting fascinating sky-theater shows mapping the stars and planets. Highly recommended for children and science enthusiasts.",
+        image: "https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 20, name: "HAL Aerospace Museum", category: "Museums", zone: "East",
+        lat: 12.9547, lng: 77.6809, rating: 4.5, entryFee: 50,
+        description: "India's first aviation museum featuring an impressive outdoor display of fighter jets, helicopters, and a deep dive into the nation's aerospace history.",
+        image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 21, name: "National Gallery of Modern Art", category: "Museums", zone: "Central",
+        lat: 12.9892, lng: 77.5900, rating: 4.6, entryFee: 20,
+        description: "Housed in a heritage mansion surrounded by a serene garden, showcasing a spectacular collection of modern and contemporary Indian art.",
+        image: "https://images.unsplash.com/photo-1518998053401-878c735c084c?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 22, name: "Innovative Film City", category: "Attractions", zone: "South",
+        lat: 12.7335, lng: 77.3912, rating: 4.0, entryFee: 600,
+        description: "An entertainment theme park featuring museums, a wax lagoon, mini-golf, and sets from famous reality TV shows. A fun escape for group outings.",
+        image: "https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 23, name: "Skandagiri", category: "Attractions", zone: "Day Trip",
+        lat: 13.4184, lng: 77.6834, rating: 4.4, entryFee: 250,
+        description: "Famous for thrilling midnight treks and spectacularly serene sunrise views above the clouds. Features atmospheric ruins of an 18th-century fort.",
+        image: "https://images.unsplash.com/photo-1551698618-1dfe5d08d591?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 24, name: "Hesaraghatta Lake", category: "Lakes", zone: "Day Trip",
+        lat: 13.1362, lng: 77.4727, rating: 4.1, entryFee: 0,
+        description: "A peaceful manmade reservoir spanning over 1000 acres created in the 1890s. Fantastic spot for birding and serene, crowd-free morning cycles.",
+        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 25, name: "Whitefield", category: "Restaurants", zone: "East",
+        lat: 12.9698, lng: 77.7499, rating: 4.3, entryFee: 0,
+        description: "Historically an Anglo-Indian settlement, now a major IT hub filled with luxury resorts, premium microbreweries, and massive shopping centers.",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 26, name: "Electronic City", category: "Attractions", zone: "South",
+        lat: 12.8452, lng: 77.6602, rating: 4.0, entryFee: 0,
+        description: "The silicon heart of India. While primarily an IT corridor, it features massive modern corporate campuses, elevated expressways, and specialized dining.",
+        image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 27, name: "Marathahalli Bridge", category: "Markets", zone: "East",
+        lat: 12.9558, lng: 77.6984, rating: 4.0, entryFee: 0,
+        description: "A bustling, highly active crossroad notorious for its traffic but equally famous for factory outlet stores, wholesale shopping, and street-food vendors.",
+        image: "https://images.unsplash.com/photo-1544640808-32cb5ebbcd20?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 28, name: "Sankey Tank", category: "Lakes", zone: "North",
+        lat: 13.0075, lng: 77.5746, rating: 4.4, entryFee: 0,
+        description: "Constructed in 1882 to meet the city's water demands. It's now a beautifully maintained, tranquil lake surrounded by a peaceful walking promenade.",
+        image: "https://images.unsplash.com/photo-1506456221544-7128549926d0?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 29, name: "Freedom Park", category: "Parks", zone: "Central",
+        lat: 12.9774, lng: 77.5815, rating: 4.2, entryFee: 0,
+        description: "Built on the grounds of the former Central Jail. It actively serves as a park and a popular venue for public meetings, protests, and cultural events.",
+        image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 30, name: "Shivajinagar Market", category: "Markets", zone: "Central",
+        lat: 12.9859, lng: 77.6042, rating: 4.1, entryFee: 0,
+        description: "One of the most historic and densely packed trading hubs in Bangalore. Best known for automobile parts, traditional garments, and incredible kebabs.",
+        image: "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 31, name: "Russel Market", category: "Markets", zone: "Central",
+        lat: 12.9850, lng: 77.6056, rating: 4.2, entryFee: 0,
+        description: "Built in 1927 by the British, this is the city's oldest market. A bustling heritage spot exclusively known for fresh flowers, vegetables, and historic colonial architecture.",
+        image: "https://images.unsplash.com/photo-1588612152864-16a5bdeb581d?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 32, name: "St. Mary's Basilica", category: "Church", zone: "Central",
+        lat: 12.9840, lng: 77.6046, rating: 4.7, entryFee: 0,
+        description: "The oldest church in Bangalore and the only one elevated to the status of a minor basilica. Features stunning Gothic towers and breathtaking stained glass interiors.",
+        image: "https://images.unsplash.com/photo-1548625361-ec853c8db3bf?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 33, name: "Christ University Campus", category: "Attractions", zone: "South",
+        lat: 12.9344, lng: 77.6060, rating: 4.6, entryFee: 0,
+        description: "An incredibly lush, award-winning green campus functioning as an educational oasis. Features towering old-growth trees and elegant colonial-inspired academic blocks.",
+        image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 34, name: "Mekhri Circle", category: "Attractions", zone: "North",
+        lat: 13.0118, lng: 77.5843, rating: 4.0, entryFee: 0,
+        description: "A major traffic nexus historically known as a key waypoint connecting all quarters of Bangalore. Surrounded by key governmental facilities and green belts.",
+        image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+        id: 35, name: "Yelahanka Lake", category: "Lakes", zone: "North",
+        lat: 13.0970, lng: 77.5996, rating: 4.2, entryFee: 0,
+        description: "A restored, vibrant water body located in the historic suburb of Yelahanka. Flanked by well-paved tracks, drawing massive crowds for morning jogs and seasonal bird migrations.",
+        image: "https://images.unsplash.com/photo-1568297920135-2aaec884da5a?q=80&w=800&auto=format&fit=crop"
+    }
+];
+
+// STATE Management
+let state = {
+    userLocation: null,
+    aiMode: false,
+    filters: { search: '', category: 'All', zone: 'All', sort: 'default' },
+    isAuthenticated: localStorage.getItem('eb_auth') === 'true'
+};
+
+// INITIALIZATION
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+    if (state.isAuthenticated) initApp();
+});
+
+// AUTHENTICATION LOGIC
+function checkAuth() {
+    if (state.isAuthenticated) {
+        document.getElementById('auth-gate').style.display = 'none';
+        document.getElementById('main-app').style.display = 'block';
+    } else {
+        document.getElementById('auth-gate').style.display = 'flex';
+        document.getElementById('main-app').style.display = 'none';
+    }
+}
+
+let isLoginMode = true;
+function toggleAuthMode() {
+    isLoginMode = !isLoginMode;
+    document.getElementById('signup-fields').style.display = isLoginMode ? 'none' : 'block';
+    document.getElementById('auth-subtitle').textContent = isLoginMode ? 'Log in to discover the best of the city.' : 'Sign up for a premium experience.';
+    document.getElementById('auth-btn-text').textContent = isLoginMode ? 'Log In' : 'Sign Up';
+    document.getElementById('toggle-auth-mode').textContent = isLoginMode ? "Don't have an account? Sign Up" : "Already have an account? Log In";
+    document.getElementById('form-msg').style.display = 'none';
+}
+
+function handleLocalAuth(e) {
+    e.preventDefault();
+    const email = document.getElementById('auth-email').value;
+    const password = document.getElementById('auth-password').value;
+    const msgBox = document.getElementById('form-msg');
+    const btnText = document.getElementById('auth-btn-text');
+    const spinner = document.getElementById('auth-spinner');
+    
+    // Regex validations
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showAuthMsg('error', 'Please enter a valid email address.');
+        return;
+    }
+    if (password.length < 6) {
+        showAuthMsg('error', 'Password must be at least 6 characters.');
+        return;
+    }
+
+    // Simulate loading
+    btnText.style.display = 'none';
+    spinner.style.display = 'block';
+    document.getElementById('auth-submit-btn').disabled = true;
+
+    setTimeout(() => {
+        btnText.style.display = 'block';
+        spinner.style.display = 'none';
+        document.getElementById('auth-submit-btn').disabled = false;
+        
+        localStorage.setItem('eb_auth', 'true');
+        state.isAuthenticated = true;
+        checkAuth();
+        initApp();
+    }, 1500);
+}
+
+function handleForgotPassword(e) {
+    e.preventDefault();
+    showAuthMsg('success', 'A password reset link has been sent to your email.');
+}
+
+function showAuthMsg(type, text) {
+    const msgBox = document.getElementById('form-msg');
+    msgBox.className = 'form-message ' + type;
+    msgBox.textContent = text;
+}
+
+function handleGoogleLogin(response) {
+    if (response.credential) {
+        localStorage.setItem('eb_auth', 'true');
+        state.isAuthenticated = true;
+        checkAuth();
+        initApp();
+    }
+}
+
+function logout() {
+    localStorage.removeItem('eb_auth');
+    state.isAuthenticated = false;
+    checkAuth();
+}
+
+// APP LOGIC
+let map;
+let markerGroup;
+
+function initApp() {
+    if(!map) initMap();
+    document.getElementById('search-input').addEventListener('input', updateFilters);
+    document.getElementById('filter-category').addEventListener('change', updateFilters);
+    document.getElementById('filter-zone').addEventListener('change', updateFilters);
+    document.getElementById('sort-select').addEventListener('change', updateFilters);
+    document.getElementById('ai-toggle-switch').addEventListener('change', (e) => {
+        state.aiMode = e.target.checked;
+        renderGrid();
+    });
+    
+    // Map initial calculate distance (assume 5km default as per requirements if no location)
+    places.forEach(p => p.distance = 5.0);
+    renderGrid();
+}
+
+// MAP INTEGRATION
+function initMap() {
+    map = L.map('map').setView([12.9716, 77.5946], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    
+    markerGroup = L.layerGroup().addTo(map);
+    plotMarkers(places);
+}
+
+function plotMarkers(locations) {
+    markerGroup.clearLayers();
+    locations.forEach(place => {
+        const markerHTML = `<div><strong>${place.name}</strong><br>⭐ ${place.rating} | ${place.category}</div>`;
+        const marker = L.marker([place.lat, place.lng]).bindPopup(markerHTML);
+        marker.addTo(markerGroup);
+    });
+}
+
+// GEOLOCATION & HAVERSINE
+function locateUser() {
+    if (navigator.geolocation) {
+        const btn = document.querySelector('.map-overlay-btn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Locating...';
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const userLat = pos.coords.latitude;
+                const userLng = pos.coords.longitude;
+                state.userLocation = { lat: userLat, lng: userLng };
+                
+                // Add user marker
+                L.marker([userLat, userLng])
+                    .addTo(map)
+                    .bindPopup("<strong>You are here</strong>")
+                    .openPopup();
+                
+                map.setView([userLat, userLng], 13);
+                
+                // Calculate distances
+                places.forEach(p => p.distance = getDistanceFromLatLonInKm(userLat, userLng, p.lat, p.lng));
+                
+                // Flag nearest
+                let nearest = places.reduce((min, p) => p.distance < min.distance ? p : min, places[0]);
+                places.forEach(p => p.isNearest = false);
+                nearest.isNearest = true;
+
+                btn.innerHTML = '<i class="fas fa-location-crosshairs"></i> Location Verified';
+                btn.style.background = '#16a34a'; btn.style.color = '#fff';
+                
+                renderGrid();
+            },
+            () => { alert("Geolocation permission denied."); btn.innerHTML = '<i class="fas fa-location-crosshairs"></i> Use My Location'; }
+        );
+    }
+}
+
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    var R = 6371; 
+    var dLat = deg2rad(lat2-lat1);  
+    var dLon = deg2rad(lon2-lon1); 
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    return R * c;
+}
+function deg2rad(deg) { return deg * (Math.PI/180) }
+
+// FILTERING & SORTING
+function updateFilters() {
+    state.filters.search = document.getElementById('search-input').value.toLowerCase();
+    state.filters.category = document.getElementById('filter-category').value;
+    state.filters.zone = document.getElementById('filter-zone').value;
+    state.filters.sort = document.getElementById('sort-select').value;
+    renderGrid();
+}
+
+function clearFilters() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('filter-category').value = 'All';
+    document.getElementById('filter-zone').value = 'All';
+    document.getElementById('sort-select').value = 'default';
+    updateFilters();
+}
+
+function getFilteredPlaces() {
+    let result = places.filter(p => {
+        const matchSearch = p.name.toLowerCase().includes(state.filters.search);
+        const matchCat = state.filters.category === 'All' || p.category === state.filters.category;
+        const matchZone = state.filters.zone === 'All' || p.zone === state.filters.zone;
+        return matchSearch && matchCat && matchZone;
+    });
+
+    if (state.filters.sort === 'rating') result.sort((a,b) => b.rating - a.rating);
+    else if (state.filters.sort === 'distance') result.sort((a,b) => a.distance - b.distance);
+    else if (state.filters.sort === 'az') result.sort((a,b) => a.name.localeCompare(b.name));
+
+    return result;
+}
+
+// AI VERDICTS
+function getAIVerdict(p) {
+    const score = (p.rating * 40) - (p.entryFee * 0.5) - (p.distance * 2);
+    if (score > 150) return { text: "🌟 Excellent", cls: "ai-good" };
+    if (score > 100) return { text: "👍 Good", cls: "ai-okay" };
+    return { text: "⚠️ Consider", cls: "ai-warn" };
+}
+
+// RENDERING
+function renderGrid() {
+    const grid = document.getElementById('places-grid');
+    const filtered = getFilteredPlaces();
+    
+    document.getElementById('results-count').textContent = `Showing ${filtered.length} of ${places.length} places`;
+    
+    grid.innerHTML = filtered.map(place => {
+        const feeHtml = place.entryFee === 0 ? 'Free' : `₹${place.entryFee}`;
+        const distHtml = state.userLocation ? `${place.distance.toFixed(1)} km` : '';
+        const nearestBadge = place.isNearest ? `<div class="pulse-badge"><i class="fas fa-location-arrow"></i> Nearest to You!</div>` : '';
+        
+        let aiBadgeHtml = '';
+        if (state.aiMode) {
+            const verdict = getAIVerdict(place);
+            aiBadgeHtml = `<div class="ai-verdict-badge ${verdict.cls}">${verdict.text}</div>`;
+        }
+
+        const encodedUberCmd = encodeURI(`https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${place.lat}&dropoff[longitude]=${place.lng}&dropoff[nickname]=${place.name}`);
+
+        return `
+            <div class="place-card">
+                <div class="card-img-wrap">
+                    ${nearestBadge}
+                    <div class="zone-badge zone-${place.zone.replace(/\s/g, '')}">${place.zone}</div>
+                    ${aiBadgeHtml}
+                    <img src="${place.image}" class="card-img" alt="${place.name}">
+                </div>
+                <div class="card-content">
+                    <div class="card-category">${place.category}</div>
+                    <h3 class="card-title">${place.name}</h3>
+                    <div class="card-meta">
+                        <span class="rating">⭐ ${place.rating}</span>
+                        <span>💵 ${feeHtml}</span>
+                        ${distHtml ? `<span>📍 ${distHtml}</span>` : ''}
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="openModal(${place.id})">View Details</button>
+                        <a href="${encodedUberCmd}" class="btn-uber-sm" target="_blank"><i class="fab fa-uber"></i></a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    plotMarkers(filtered);
+}
+
+// MODAL LOGIC
+function openModal(id) {
+    const place = places.find(p => p.id === id);
+    if(!place) return;
+
+    document.getElementById('modal-img').src = place.image;
+    document.getElementById('modal-title').textContent = place.name;
+    document.getElementById('modal-cat').innerHTML = `<i class="fas fa-tag"></i> ${place.category} | ${place.zone}`;
+    document.getElementById('modal-rating').innerHTML = `<i class="fas fa-star" style="color:gold;"></i> ${place.rating}`;
+    document.getElementById('modal-fee').innerHTML = `<i class="fas fa-ticket-alt"></i> ${place.entryFee === 0 ? 'Free Entry' : '₹'+place.entryFee}`;
+    document.getElementById('modal-desc').textContent = place.description;
+
+    const distEl = document.getElementById('modal-dist');
+    if (state.userLocation) {
+        distEl.style.display = 'inline';
+        distEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${place.distance.toFixed(1)} km away`;
+    } else {
+        distEl.style.display = 'none';
+    }
+
+    // Uber pricing (₹15/km Auto, ₹25/km Cab)
+    const autoFare = Math.ceil(place.distance * 15);
+    const cabFare = Math.ceil(place.distance * 25);
+    document.getElementById('modal-fare').textContent = `Est. Auto: ₹${autoFare} | Cab: ₹${cabFare}`;
+    
+    document.getElementById('modal-uber-link').href = encodeURI(`https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${place.lat}&dropoff[longitude]=${place.lng}&dropoff[nickname]=${place.name}`);
+
+    document.getElementById('detail-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('detail-modal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function handleModalClick(e) {
+    if(e.target.id === 'detail-modal') closeModal();
+}
+
+window.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeModal();
+});
+
+</script></body></html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (!localStorage.getItem('ebUser')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Bangalore — Discover the Garden City</title>
+    <meta name="description" content="Explore 120+ amazing places in Bangalore. Find temples, parks, palaces, restaurants and more with real-time maps, fare estimates, and AI recommendations.">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ExploreBLR">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="orb-3"></div>
+
+    <header class="sticky-header">
+        <div class="header-content">
+            <h1 class="logo-font">Explore <span class="accent">Bangalore</span></h1>
+            <div class="header-actions">
+                <div class="ai-toggle-group">
+                    <label class="switch">
+                      <input type="checkbox" id="ai-toggle">
+                      <span class="slider round"></span>
+                    </label>
+                    <span class="ai-label">AI Assist <i class="fas fa-sparkles"></i></span>
+                </div>
+                <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="map-section">
+            <div class="map-controls">
+                <button id="my-location-btn" class="btn-location"><i class="fas fa-location-arrow"></i> My Location</button>
+            </div>
+            <div id="map" style="height:450px;width:100%;"></div>
+        </section>
+
+        <section class="filters-section">
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search 120+ places...">
+                </div>
+                <select id="category-filter">
+                    <option value="All">All Categories</option>
+                    <option value="Parks">Parks & Gardens</option>
+                    <option value="Palaces">Palaces</option>
+                    <option value="Temples">Temples</option>
+                    <option value="Mosques">Mosques</option>
+                    <option value="Lakes">Lakes</option>
+                    <option value="Malls">Malls</option>
+                    <option value="Museums">Museums</option>
+                    <option value="Markets">Markets</option>
+                    <option value="Attractions">Attractions</option>
+                    <option value="Day Trip">Day Trips</option>
+                    <option value="Landmarks">Landmarks</option>
+                    <option value="Heritage">Heritage</option>
+                    <option value="Restaurants">Restaurants</option>
+                </select>
+                <select id="zone-filter">
+                    <option value="All">All Zones</option>
+                    <option value="Central">Central</option>
+                    <option value="South">South</option>
+                    <option value="North">North</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="Day Trip">Day Trip</option>
+                </select>
+                <select id="sort-select">
+                    <option value="default">Sort By</option>
+                    <option value="rating">Highest Rating</option>
+                    <option value="distance">Nearest</option>
+                    <option value="name">Name (A-Z)</option>
+                </select>
+                <button id="clear-filters-btn" class="btn-secondary"><i class="fas fa-times"></i> Clear</button>
+            </div>
+            <div class="results-info">
+                <p id="results-count">Showing 120 of 120 places</p>
+            </div>
+        </section>
+
+        <section class="places-section">
+            <div id="cards-grid" class="cards-grid"></div>
+        </section>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-items">
+            <button class="bottom-nav-item active" onclick="document.getElementById('map').scrollIntoView({behavior:'smooth'})">
+                <i class="fas fa-map"></i>
+                <span>Map</span>
+            </button>
+            <button class="bottom-nav-item" onclick="document.getElementById('search-input').scrollIntoView({behavior:'smooth'}); document.getElementById('search-input').focus();">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </button>
+            <button class="bottom-nav-item" onclick="document.getElementById('cards-grid').scrollIntoView({behavior:'smooth'})">
+                <i class="fas fa-th-large"></i>
+                <span>Places</span>
+            </button>
+            <button class="bottom-nav-item" onclick="document.getElementById('ai-toggle').click()">
+                <i class="fas fa-magic"></i>
+                <span>AI</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/places.js"></script>
+    <script src="js/images.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        var header = document.querySelector('.sticky-header');
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(10,14,26,0.98)';
+            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
+        } else {
+            header.style.background = '';
+            header.style.boxShadow = '';
+        }
+    });
+    </script>
+
+    <!-- PWA Service Worker & Install Prompt -->
+    <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(function(reg) {
+            console.log('SW registered:', reg.scope);
+        }).catch(function(err) {
+            console.log('SW error:', err);
+        });
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        deferredPrompt = e;
+        // Show install button
+        var btn = document.createElement('button');
+        btn.id = 'pwa-install-btn';
+        btn.innerHTML = '<i class="fas fa-download"></i> Install App';
+        btn.style.cssText = 'position:fixed;bottom:90px;right:20px;z-index:3000;background:linear-gradient(135deg,#f0b429,#e09100);color:#0a0e1a;border:none;padding:12px 20px;border-radius:12px;font-weight:700;font-family:DM Sans;cursor:pointer;box-shadow:0 4px 20px rgba(240,180,41,0.4);font-size:0.9rem;display:flex;align-items:center;gap:8px;';
+        btn.onclick = function() {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(function(result) {
+                deferredPrompt = null;
+                btn.remove();
+            });
+        };
+        document.body.appendChild(btn);
+    });
+    </script>
+</body>
+</html>

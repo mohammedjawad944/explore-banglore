@@ -1,0 +1,2210 @@
+const places = [
+  {
+    "id": 1,
+    "name": "Bengaluru Palace",
+    "zone": "Central",
+    "lat": 12.9988,
+    "lng": 77.5921,
+    "rating": 4.5,
+    "reviews": 52000,
+    "fee": 230,
+    "hours": "10AM–5:30PM",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bangalore_Palace.jpg/1024px-Bangalore_Palace.jpg",
+    "description": "A majestic Tudor-style palace built in 1878, featuring elegant wood carvings, Victorian furniture, and sprawling grounds. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. Offers a serene escape from the city noise. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bangalore_Palace.jpg/1024px-Bangalore_Palace.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Bangalore_Palace_-_Jayamahal.jpg/1280px-Bangalore_Palace_-_Jayamahal.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Bangalore_Palace%2C_Bengaluru%2C_Karnataka%2C_India_%282016%29_1.jpg/1280px-Bangalore_Palace%2C_Bengaluru%2C_Karnataka%2C_India_%282016%29_1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/CANNON_BEFORE_BANGALORE_PALACE.jpg/1280px-CANNON_BEFORE_BANGALORE_PALACE.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Incredible experience! Perfect for enriching your Bangalore trip. Definitely check this out."
+    }
+  },
+  {
+    "id": 2,
+    "name": "Tipu Sultan's Summer Palace",
+    "zone": "South",
+    "lat": 12.9594,
+    "lng": 77.5738,
+    "rating": 4.2,
+    "reviews": 18000,
+    "fee": 20,
+    "hours": "8:30AM–5:30PM",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Tipu_Sultan%27s_Summer_Palace.jpg/1024px-Tipu_Sultan%27s_Summer_Palace.jpg",
+    "description": "An exquisite example of Indo-Islamic architecture built entirely of teakwood with beautiful floral motifs. Steeped in centuries of fascinating history and architectural brilliance. Rich in history and culture. Steeped in centuries of fascinating history and architectural brilliance. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Tipu_Sultan%27s_Summer_Palace.jpg/1024px-Tipu_Sultan%27s_Summer_Palace.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Inside_Tipu_Sultan%27s_summer_palace_in_Bangalore_1.jpg/1280px-Inside_Tipu_Sultan%27s_summer_palace_in_Bangalore_1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Inside_Tipu_Sultan%27s_summer_palace_in_Bangalore_2.jpg/1280px-Inside_Tipu_Sultan%27s_summer_palace_in_Bangalore_2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Inside_Tipu_Sultan%27s_summer_palace_in_Bangalore_3.jpg/1280px-Inside_Tipu_Sultan%27s_summer_palace_in_Bangalore_3.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Stunning experience! Truly captures the essence of the city."
+    }
+  },
+  {
+    "id": 3,
+    "name": "Vidhana Soudha",
+    "zone": "Central",
+    "lat": 12.9796,
+    "lng": 77.5906,
+    "rating": 4.6,
+    "reviews": 40000,
+    "fee": 0,
+    "hours": "Exterior viewing only",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/1024px-Vidhan_Soudha%2C_Bangalore.jpg",
+    "description": "The imposing state legislature building known for its Neo-Dravidian architecture. Best viewed illuminated at night. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. A must-visit for tourists and locals alike. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/1024px-Vidhan_Soudha%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Vidhan_Soudha_Bangalore_Front_view.JPG/1280px-Vidhan_Soudha_Bangalore_Front_view.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Vidhana_Soudha_LE.jpg/1280px-Vidhana_Soudha_LE.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Mahatma_Gandhi_Statue%2C_Vidhana_Soudha_%2802%29.jpg/1280px-Mahatma_Gandhi_Statue%2C_Vidhana_Soudha_%2802%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Breathtaking experience! You simply cannot miss experiencing this."
+    }
+  },
+  {
+    "id": 4,
+    "name": "Devanahalli Fort",
+    "zone": "North",
+    "lat": 13.2494,
+    "lng": 77.7126,
+    "rating": 4,
+    "reviews": 3500,
+    "fee": 0,
+    "hours": "Open 24 hours",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Devanahalli_Fort.jpg/1024px-Devanahalli_Fort.jpg",
+    "description": "The historic birthplace of Tipu Sultan featuring a sprawling 1500CE fort and ancient temples. Steeped in centuries of fascinating history and architectural brilliance. A true gem of Bangalore. Steeped in centuries of fascinating history and architectural brilliance. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Devanahalli_Fort.jpg/1024px-Devanahalli_Fort.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Devanahalli_fort%2C_near_Bangalore.JPG/1280px-Devanahalli_fort%2C_near_Bangalore.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Devanahalli_fort_01.jpg/1280px-Devanahalli_fort_01.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Devanahalli_fort_02.jpg/1280px-Devanahalli_fort_02.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Serene experience! Offers a deeply rewarding experience. Definitely check this out."
+    }
+  },
+  {
+    "id": 5,
+    "name": "National Gallery of Modern Art",
+    "zone": "Central",
+    "lat": 12.9859,
+    "lng": 77.5878,
+    "rating": 4.6,
+    "reviews": 7200,
+    "fee": 20,
+    "hours": "10AM–5PM closed Mon",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/NGMA%2C_Bangalore.jpg/1024px-NGMA%2C_Bangalore.jpg",
+    "description": "Showcases Indian modern and contemporary art in a beautiful heritage mansion with sprawling lawns. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. Rich in history and culture. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. Absolutely breathtaking.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/NGMA%2C_Bangalore.jpg/1024px-NGMA%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/National_Gallery_of_Modern_Art_-_NGMA_-_Bangalore_6643.JPG/1280px-National_Gallery_of_Modern_Art_-_NGMA_-_Bangalore_6643.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/National_Gallery_of_Modern_Art_-_NGMA_-_Bangalore_6645.JPG/1280px-National_Gallery_of_Modern_Art_-_NGMA_-_Bangalore_6645.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/National_Gallery_of_Modern_Art%2C_Bangalore_%282025%29_05.jpg/1280px-National_Gallery_of_Modern_Art%2C_Bangalore_%282025%29_05.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Vibrant experience! Highly recommended by locals. A premium experience."
+    }
+  },
+  {
+    "id": 6,
+    "name": "Bangalore Fort",
+    "zone": "South",
+    "lat": 12.9624,
+    "lng": 77.5755,
+    "rating": 4.1,
+    "reviews": 4000,
+    "fee": 15,
+    "hours": "8:30AM–5:30PM",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bangalore_Fort_Delhi_Gate.jpg/1024px-Bangalore_Fort_Delhi_Gate.jpg",
+    "description": "The remnants of a mud fort established in 1537 by Kempe Gowda I. Steeped in centuries of fascinating history and architectural brilliance. Absolutely breathtaking. Steeped in centuries of fascinating history and architectural brilliance. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bangalore_Fort_Delhi_Gate.jpg/1024px-Bangalore_Fort_Delhi_Gate.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/9/95/Bangalore_Fort.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Bangalore_Fort_Inside.jpg/1280px-Bangalore_Fort_Inside.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Bangalore_Fort_Inside_Panorama.jpg/1280px-Bangalore_Fort_Inside_Panorama.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Historic experience! A fantastic destination for memory-making."
+    }
+  },
+  {
+    "id": 7,
+    "name": "Lalbagh Botanical Garden",
+    "zone": "South",
+    "lat": 12.9507,
+    "lng": 77.5848,
+    "rating": 4.5,
+    "reviews": 85000,
+    "fee": 30,
+    "hours": "6AM–7PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lalbagh_Glass_House.jpg/1024px-Lalbagh_Glass_House.jpg",
+    "description": "A historic 240-acre botanical garden housing India's largest collection of tropical plants and a famous glass house. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Perfect for a weekend outing. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lalbagh_Glass_House.jpg/1024px-Lalbagh_Glass_House.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Indian_Independence_day_celebration_216th_flower_show_2024%2C_Lalbagh%2C_Bangalore_129.jpg/1280px-Indian_Independence_day_celebration_216th_flower_show_2024%2C_Lalbagh%2C_Bangalore_129.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Lalbagh_Botanical_Garden_in_Bangalore_2024.jpg/1280px-Lalbagh_Botanical_Garden_in_Bangalore_2024.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Lalbagh_Botanical_Garden_in_Bangalore_2024_9.jpg/1280px-Lalbagh_Botanical_Garden_in_Bangalore_2024_9.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Magnificent experience! A top-tier spot for your itinerary. Definitely check this out."
+    }
+  },
+  {
+    "id": 8,
+    "name": "Cubbon Park",
+    "zone": "Central",
+    "lat": 12.9779,
+    "lng": 77.5952,
+    "rating": 4.6,
+    "reviews": 70000,
+    "fee": 0,
+    "hours": "6AM–6PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Cubbon_park_bangalore.jpg/1024px-Cubbon_park_bangalore.jpg",
+    "description": "The 'Lung of the City', offering 300 acres of bamboo groves, historic statues, and peaceful walking trails. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Highly recommended by travel experts.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Cubbon_park_bangalore.jpg/1024px-Cubbon_park_bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/High_Court_of_Karnataka%2C_Bangalore_MMK.jpg/1280px-High_Court_of_Karnataka%2C_Bangalore_MMK.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/9/99/Cubbon_Park%2C_Bangalore_%281890%29._Curzon_Collection%27s_%27Souvenir_of_Mysore_Album%27.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Stage-3-cubbon_park-bangalore-India.jpg/1280px-Stage-3-cubbon_park-bangalore-India.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Iconic experience! One of the best experiences the city offers."
+    }
+  },
+  {
+    "id": 9,
+    "name": "Ulsoor Lake",
+    "zone": "East",
+    "lat": 12.9818,
+    "lng": 77.618,
+    "rating": 4.2,
+    "reviews": 15000,
+    "fee": 0,
+    "hours": "6AM–8PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ulsoor_lake.jpg/1024px-Ulsoor_lake.jpg",
+    "description": "One of the oldest and largest lakes in the city, dotted with picturesque islands and boating facilities. A tranquil environment making it a perfect getaway for nature lovers. Highly recommended by travel experts. A tranquil environment making it a perfect getaway for nature lovers. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ulsoor_lake.jpg/1024px-Ulsoor_lake.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Ulsoor_Lake%2C_Bangalore.jpg/1280px-Ulsoor_Lake%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Ulsoor_lake%2C_Bangalore.jpg/1280px-Ulsoor_lake%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ulsoor_Lake_%2C_Bangalore_02.jpg/1280px-Ulsoor_Lake_%2C_Bangalore_02.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: A true hidden gem experience! A place that truly lives up to its hype. A premium experience."
+    }
+  },
+  {
+    "id": 10,
+    "name": "Bugle Rock Park",
+    "zone": "South",
+    "lat": 12.9427,
+    "lng": 77.5694,
+    "rating": 4.5,
+    "reviews": 3200,
+    "fee": 0,
+    "hours": "5:30–10AM, 4–8:30PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Bugle_Rock_Park.jpg/1024px-Bugle_Rock_Park.jpg",
+    "description": "A massive rock formation dating back 3,000 million years, surrounded by lush greenery. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Bugle_Rock_Park.jpg/1024px-Bugle_Rock_Park.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/SChapman1982_Buglerock_Toy_Vendor_2.jpg/1280px-SChapman1982_Buglerock_Toy_Vendor_2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/2/27/Squirrel%40BugleRockPark.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3f/Bats%40BugleRockPark.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: A must-see experience! A wonderful escape from the ordinary. Definitely check this out."
+    }
+  },
+  {
+    "id": 11,
+    "name": "Sankey Tank",
+    "zone": "West",
+    "lat": 13.0089,
+    "lng": 77.5755,
+    "rating": 4.3,
+    "reviews": 8500,
+    "fee": 0,
+    "hours": "6AM–8PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Sankey_Tank%2C_Bangalore.jpg/1024px-Sankey_Tank%2C_Bangalore.jpg",
+    "description": "A picturesque man-made lake built in 1882, ideal for peaceful walks and boating. A tranquil environment making it a perfect getaway for nature lovers. Highly recommended by travel experts. A tranquil environment making it a perfect getaway for nature lovers. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Sankey_Tank%2C_Bangalore.jpg/1024px-Sankey_Tank%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Sankey_Tank.jpg/1280px-Sankey_Tank.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Sankey_Tank%2C_Bangalore.jpg/1280px-Sankey_Tank%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Sankey_Tank%2C_Bangalore%2C_India.jpg/1280px-Sankey_Tank%2C_Bangalore%2C_India.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Unforgettable experience! Make sure your camera is fully charged!"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Big Banyan Tree",
+    "zone": "West",
+    "lat": 12.8988,
+    "lng": 77.382,
+    "rating": 4.2,
+    "reviews": 13000,
+    "fee": 0,
+    "hours": "8AM–5PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Dodda_Alada_Mara_-_Big_Banyan_Tree.jpg/1024px-Dodda_Alada_Mara_-_Big_Banyan_Tree.jpg",
+    "description": "A gigantic 400-year-old banyan tree spread across 3 acres of land. A tranquil environment making it a perfect getaway for nature lovers. A must-visit for tourists and locals alike. A tranquil environment making it a perfect getaway for nature lovers. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Dodda_Alada_Mara_-_Big_Banyan_Tree.jpg/1024px-Dodda_Alada_Mara_-_Big_Banyan_Tree.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/5/5e/Big_Bangalore_Banyan_Tree.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Big_Banyan_tree%2C_Bangalore.jpg/1280px-Big_Banyan_tree%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/8/83/Big_Banyan_tree%2C_Bangalore_%281%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Captivating experience! Guaranteed to leave you amazed."
+    }
+  },
+  {
+    "id": 13,
+    "name": "Agara Lake",
+    "zone": "South",
+    "lat": 12.9259,
+    "lng": 77.6536,
+    "rating": 4.6,
+    "reviews": 11000,
+    "fee": 0,
+    "hours": "6AM–6PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Agara_Lake_Panorama.jpg/1024px-Agara_Lake_Panorama.jpg",
+    "description": "A beautifully revitalized lake popular among joggers and bird watchers in HSR Layout. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Perfect for a weekend outing. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Highly recommended by travel experts.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Agara_Lake_Panorama.jpg/1024px-Agara_Lake_Panorama.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Bangalore_Agara_Kere.jpg/1280px-Bangalore_Agara_Kere.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Agara_Lake.jpg/1280px-Agara_Lake.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Agara_Lake_%2825279546271%29.jpg/1280px-Agara_Lake_%2825279546271%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Picturesque experience! Spectacular views and great ambiance. Definitely check this out."
+    }
+  },
+  {
+    "id": 14,
+    "name": "Madiwala Lake",
+    "zone": "South",
+    "lat": 12.915,
+    "lng": 77.608,
+    "rating": 4,
+    "reviews": 8000,
+    "fee": 10,
+    "hours": "5AM–9:30PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Madiwala_Lake_Boating.jpg/1024px-Madiwala_Lake_Boating.jpg",
+    "description": "A vast 300-year-old lake known for migratory birds and evening boating rides. A tranquil environment making it a perfect getaway for nature lovers. Offers a serene escape from the city noise. A tranquil environment making it a perfect getaway for nature lovers. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Madiwala_Lake_Boating.jpg/1024px-Madiwala_Lake_Boating.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Madiwala_Lake_Bangalore_Karnataka_Sagar_Sangamam.jpg/1280px-Madiwala_Lake_Bangalore_Karnataka_Sagar_Sangamam.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Madiwala_Lake%2C_Bangalore.jpg/1280px-Madiwala_Lake%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Sunrise_at_Madiwala_lake%2C_Bengaluru.jpg/1280px-Sunrise_at_Madiwala_lake%2C_Bengaluru.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Majestic experience! An absolute delight to visit."
+    }
+  },
+  {
+    "id": 15,
+    "name": "Hesaraghatta Lake",
+    "zone": "North",
+    "lat": 13.1495,
+    "lng": 77.4725,
+    "rating": 4.1,
+    "reviews": 5000,
+    "fee": 0,
+    "hours": "Sunrise to Sunset",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Hesaraghatta_Lake_Panorama.jpg/1024px-Hesaraghatta_Lake_Panorama.jpg",
+    "description": "A scenic freshwater reservoir created in 1894, perfect for cycling and escaping city life. A tranquil environment making it a perfect getaway for nature lovers. Offers a serene escape from the city noise. A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Hesaraghatta_Lake_Panorama.jpg/1024px-Hesaraghatta_Lake_Panorama.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/0/06/Evolvulus_hess.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Hessarghatta_Lake_%2850935033071%29.jpg/1280px-Hessarghatta_Lake_%2850935033071%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Hessarghatta_Lake_%2850935033881%29.jpg/1280px-Hessarghatta_Lake_%2850935033881%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Spectacular experience! An ideal place to spend your time."
+    }
+  },
+  {
+    "id": 16,
+    "name": "Hebbal Lake",
+    "zone": "North",
+    "lat": 13.0456,
+    "lng": 77.5855,
+    "rating": 4.2,
+    "reviews": 4500,
+    "fee": 20,
+    "hours": "7AM–8PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Hebbal_Lake.jpg/1024px-Hebbal_Lake.jpg",
+    "description": "A popular photography spot known for its lush islands and pelican sightings. A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore. A tranquil environment making it a perfect getaway for nature lovers. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Hebbal_Lake.jpg/1024px-Hebbal_Lake.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3c/HebbalLake.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Birds_of_Hebbal_Lake%2C_Bangalore.jpg/1280px-Birds_of_Hebbal_Lake%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Hebbal_Lake_2008.jpg/1280px-Hebbal_Lake_2008.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Enchanting experience! Perfect for enriching your Bangalore trip. Definitely check this out."
+    }
+  },
+  {
+    "id": 17,
+    "name": "ISKCON Temple",
+    "zone": "North",
+    "lat": 13.0098,
+    "lng": 77.5511,
+    "rating": 4.8,
+    "reviews": 93000,
+    "fee": 0,
+    "hours": "4:15AM–8:30PM",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/ISKCON_Temple_Bangalore.jpg/1024px-ISKCON_Temple_Bangalore.jpg",
+    "description": "One of the largest ISKCON temples in the world, sitting majestically atop Hare Krishna Hill. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise. Ranked among the highest-rated spots in the city. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/ISKCON_Temple_Bangalore.jpg/1024px-ISKCON_Temple_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/ISKCON_Banglaore_Temple.jpg/1280px-ISKCON_Banglaore_Temple.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Khichdi_Prasadam_in_Donna_%28Iskcon_Bangalore%29.jpg/1280px-Khichdi_Prasadam_in_Donna_%28Iskcon_Bangalore%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/ISKCON_Temple_Bangalore_%283475538274%29.jpg/1280px-ISKCON_Temple_Bangalore_%283475538274%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Fascinating experience! Truly captures the essence of the city. A premium experience."
+    }
+  },
+  {
+    "id": 18,
+    "name": "Bull Temple",
+    "zone": "South",
+    "lat": 12.9416,
+    "lng": 77.5682,
+    "rating": 4.6,
+    "reviews": 15000,
+    "fee": 0,
+    "hours": "6AM–8PM",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bull_Temple_Basavanagudi_Bangalore.jpg/1024px-Bull_Temple_Basavanagudi_Bangalore.jpg",
+    "description": "Also known as Nandi Temple, this historic site features a massive monolithic bull statue. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise. Ranked among the highest-rated spots in the city. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bull_Temple_Basavanagudi_Bangalore.jpg/1024px-Bull_Temple_Basavanagudi_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/8/86/Dodda_Ganeshana_Gudi_Hindu_temple%2C_Basavanagudi%2C_Karnataka%2C_India.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Khajuraho_India%2C_Nandi_Temple_01.JPG/1280px-Khajuraho_India%2C_Nandi_Temple_01.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Sri_Big_Bull_Temple%2C_Dodda_Ganeshana_Gudi%2C_Bangalore%2C_India_-_20130526-05.JPG/1280px-Sri_Big_Bull_Temple%2C_Dodda_Ganeshana_Gudi%2C_Bangalore%2C_India_-_20130526-05.JPG"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Exquisite experience! You simply cannot miss experiencing this."
+    }
+  },
+  {
+    "id": 19,
+    "name": "St. Mary's Basilica",
+    "zone": "Central",
+    "lat": 12.984,
+    "lng": 77.6042,
+    "rating": 4.7,
+    "reviews": 11000,
+    "fee": 0,
+    "hours": "6AM–9PM",
+    "category": "Church",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/St_Marys_Basilica_Bangalore.jpg/1024px-St_Marys_Basilica_Bangalore.jpg",
+    "description": "The oldest church in Bangalore, famous for its Gothic architecture and vibrant September festival. Ranked among the highest-rated spots in the city. A true gem of Bangalore. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/St_Marys_Basilica_Bangalore.jpg/1024px-St_Marys_Basilica_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/St._Marys_Basilica_Bangalore2.jpg/1280px-St._Marys_Basilica_Bangalore2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/St._Mary%27s_Basilica_Bangalore_Inside.jpg/1280px-St._Mary%27s_Basilica_Bangalore_Inside.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/St._Mary%27s_Basilica_Bangalore_gate.jpg/1280px-St._Mary%27s_Basilica_Bangalore_gate.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Phenomenal experience! Offers a deeply rewarding experience. Definitely check this out."
+    }
+  },
+  {
+    "id": 20,
+    "name": "Shivoham Shiva Temple",
+    "zone": "East",
+    "lat": 12.9587,
+    "lng": 77.6534,
+    "rating": 4.4,
+    "reviews": 28000,
+    "fee": 250,
+    "hours": "Open 24 hours",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Shiva_Temple_Bangalore.jpg/1024px-Shiva_Temple_Bangalore.jpg",
+    "description": "Famous for its massive 65-foot tall Lord Shiva statue and artificial Himalayan replica.  Absolutely breathtaking.  A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Shiva_Temple_Bangalore.jpg/1024px-Shiva_Temple_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/a/a9/Shiva_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shivoham_shiva_temple_.jpg/1280px-Shivoham_shiva_temple_.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/e/e5/Shivoham_Shiva_Statue.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Inspiring experience! Highly recommended by locals."
+    }
+  },
+  {
+    "id": 21,
+    "name": "Gavi Gangadhareshwara Temple",
+    "zone": "South",
+    "lat": 12.9495,
+    "lng": 77.5539,
+    "rating": 4.6,
+    "reviews": 12000,
+    "fee": 0,
+    "hours": "6AM–8PM",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Gavi_Gangadhareshwara_Temple.jpg/1024px-Gavi_Gangadhareshwara_Temple.jpg",
+    "description": "An ancient cave temple known for its mysterious rock-cut architecture and astronomical significance. Ranked among the highest-rated spots in the city. Rich in history and culture. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Gavi_Gangadhareshwara_Temple.jpg/1024px-Gavi_Gangadhareshwara_Temple.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Gavi_Gangadhareshwara_temple%2C_Bengaluru.jpg/1280px-Gavi_Gangadhareshwara_temple%2C_Bengaluru.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/View_of_the_Gavi_Gangadhareshwara_temple_at_Shivagange_near_Bangalore.jpg/1280px-View_of_the_Gavi_Gangadhareshwara_temple_at_Shivagange_near_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Inner_mantapa_in_a_natural_cave_leading_to_the_sanctum_in_the_Gavi_Gangadhareshwara_temple_at_Shivagange_near_Bangalore.jpg/1280px-Inner_mantapa_in_a_natural_cave_leading_to_the_sanctum_in_the_Gavi_Gangadhareshwara_temple_at_Shivagange_near_Bangalore.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Incredible experience! A fantastic destination for memory-making. A premium experience."
+    }
+  },
+  {
+    "id": 22,
+    "name": "Art of Living International Center",
+    "zone": "South",
+    "lat": 12.839,
+    "lng": 77.5028,
+    "rating": 4.7,
+    "reviews": 25000,
+    "fee": 0,
+    "hours": "9AM–8PM",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Vishalakshi_Mantap_Art_Of_Living_Bangalore.jpg/1024px-Vishalakshi_Mantap_Art_Of_Living_Bangalore.jpg",
+    "description": "A peaceful ashram founded by Sri Sri Ravi Shankar, featuring beautiful gardens and meditation halls. Ranked among the highest-rated spots in the city. Perfect for a weekend outing. Ranked among the highest-rated spots in the city. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Vishalakshi_Mantap_Art_Of_Living_Bangalore.jpg/1024px-Vishalakshi_Mantap_Art_Of_Living_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Art_of_Living_International_Ashram.JPG/1280px-Art_of_Living_International_Ashram.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/0/0a/Navratri_at_The_Art_of_Living_International_Center%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Meditation_Hall_International_Center_Art_Of_Living_%2848186334266%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Stunning experience! A top-tier spot for your itinerary. Definitely check this out."
+    }
+  },
+  {
+    "id": 23,
+    "name": "Dodda Ganapathi Temple",
+    "zone": "South",
+    "lat": 12.9423,
+    "lng": 77.567,
+    "rating": 4.7,
+    "reviews": 15000,
+    "fee": 0,
+    "hours": "6AM–8PM",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Dodda_Basavana_Gudi.jpg/1024px-Dodda_Basavana_Gudi.jpg",
+    "description": "Famous for its massive monolithic Ganesha idol which is 18 ft tall and 16 ft wide. Ranked among the highest-rated spots in the city. Absolutely breathtaking. Ranked among the highest-rated spots in the city. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Dodda_Basavana_Gudi.jpg/1024px-Dodda_Basavana_Gudi.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Dharmaraya_Swamy_Temple_Bangalore.jpg/1280px-Dharmaraya_Swamy_Temple_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Dharmaraya_Swamy_Temple_Bangalore_edit1.jpg/1280px-Dharmaraya_Swamy_Temple_Bangalore_edit1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Sri_Rajarajeshwari_Temple_%2C_Bangalore_._04.jpg/1280px-Sri_Rajarajeshwari_Temple_%2C_Bangalore_._04.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Breathtaking experience! One of the best experiences the city offers."
+    }
+  },
+  {
+    "id": 24,
+    "name": "Infant Jesus Shrine",
+    "zone": "Central",
+    "lat": 12.9547,
+    "lng": 77.6183,
+    "rating": 4.8,
+    "reviews": 14000,
+    "fee": 0,
+    "hours": "5:30AM–9PM",
+    "category": "Church",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Infant_Jesus_Church%2C_Viveknagar%2C_Bangalore.jpg/1024px-Infant_Jesus_Church%2C_Viveknagar%2C_Bangalore.jpg",
+    "description": "A highly revered Catholic shrine drawing countless devotees, known for Thursday novenas. Ranked among the highest-rated spots in the city. Rich in history and culture. Ranked among the highest-rated spots in the city. A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Infant_Jesus_Church%2C_Viveknagar%2C_Bangalore.jpg/1024px-Infant_Jesus_Church%2C_Viveknagar%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/InfantJesus_Shrine_Blr1.jpg/1280px-InfantJesus_Shrine_Blr1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/InfantJesus_Shrine_Blr2.jpg/1280px-InfantJesus_Shrine_Blr2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Kids_playing_outside_of_%22Infant_Jesus%22_shrine_%283943675002%29.jpg/1280px-Kids_playing_outside_of_%22Infant_Jesus%22_shrine_%283943675002%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Serene experience! A place that truly lives up to its hype."
+    }
+  },
+  {
+    "id": 25,
+    "name": "HAL Aerospace Museum",
+    "zone": "East",
+    "lat": 12.9526,
+    "lng": 77.6705,
+    "rating": 4.4,
+    "reviews": 16000,
+    "fee": 50,
+    "hours": "9AM–5PM",
+    "category": "Education",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/HAL_Aerospace_Museum.jpg/1024px-HAL_Aerospace_Museum.jpg",
+    "description": "India's first aviation museum featuring aircraft simulators, a mock air traffic control tower, and vintage fighter jets.  A must-visit for tourists and locals alike.  Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/HAL_Aerospace_Museum.jpg/1024px-HAL_Aerospace_Museum.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/HAL_heritage_centre_and_aerospace_museum_bangalore_7638.JPG/1280px-HAL_heritage_centre_and_aerospace_museum_bangalore_7638.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/HAL_heritage_centre_and_aerospace_museum_bangalore_7640.JPG/1280px-HAL_heritage_centre_and_aerospace_museum_bangalore_7640.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/HAL_heritage_centre_and_aerospace_museum_bangalore_7641.JPG/1280px-HAL_heritage_centre_and_aerospace_museum_bangalore_7641.JPG"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Vibrant experience! A wonderful escape from the ordinary. Definitely check this out."
+    }
+  },
+  {
+    "id": 26,
+    "name": "Visvesvaraya Museum",
+    "zone": "Central",
+    "lat": 12.9752,
+    "lng": 77.5963,
+    "rating": 4.5,
+    "reviews": 22000,
+    "fee": 50,
+    "hours": "9:30AM–6PM",
+    "category": "Education",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Visvesvaraya_Industrial_and_Technological_Museum.jpg/1024px-Visvesvaraya_Industrial_and_Technological_Museum.jpg",
+    "description": "Interactive science museum perfect for students and technology enthusiasts. Ranked among the highest-rated spots in the city. Highly recommended by travel experts. Ranked among the highest-rated spots in the city. Highly recommended by travel experts.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Visvesvaraya_Industrial_and_Technological_Museum.jpg/1024px-Visvesvaraya_Industrial_and_Technological_Museum.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Visvesvaraya_Industrial_and_Technological_Museum_Bangalore.jpg/1280px-Visvesvaraya_Industrial_and_Technological_Museum_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg/1280px-Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Visvesvaraya_Industrial_and_Technological_Museum%2C_Bangalore_%282025%29_02.jpg/1280px-Visvesvaraya_Industrial_and_Technological_Museum%2C_Bangalore_%282025%29_02.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Historic experience! Make sure your camera is fully charged!"
+    }
+  },
+  {
+    "id": 27,
+    "name": "Bannerghatta National Park",
+    "zone": "South",
+    "lat": 12.7784,
+    "lng": 77.572,
+    "rating": 4.4,
+    "reviews": 26500,
+    "fee": 300,
+    "hours": "9:30AM–5PM closed Tue",
+    "category": "Adventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bannerghatta_National_Park.jpg/1024px-Bannerghatta_National_Park.jpg",
+    "description": "A vibrant reserve featuring a zoo, pet corner, butterfly enclosure, and thrilling safaris.  A true gem of Bangalore.  Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bannerghatta_National_Park.jpg/1024px-Bannerghatta_National_Park.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Entrance_Buterfly_park-_Bennargatta_national_park.JPG/1280px-Entrance_Buterfly_park-_Bennargatta_national_park.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bannerghatta_national_park%2C_Bangalore_Karnataka_India.jpg/1280px-Bannerghatta_national_park%2C_Bangalore_Karnataka_India.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Elephant-3-bannerghatta_national_park-bangalore-India.jpg/1280px-Elephant-3-bannerghatta_national_park-bangalore-India.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Magnificent experience! Guaranteed to leave you amazed."
+    }
+  },
+  {
+    "id": 28,
+    "name": "Jawaharlal Nehru Planetarium",
+    "zone": "Central",
+    "lat": 12.984,
+    "lng": 77.5898,
+    "rating": 4.3,
+    "reviews": 12000,
+    "fee": 75,
+    "hours": "10AM–5:30PM closed Mon",
+    "category": "Education",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Jawaharlal_Nehru_Planetarium%2C_Bangalore.jpg/1024px-Jawaharlal_Nehru_Planetarium%2C_Bangalore.jpg",
+    "description": "Offers fascinating sky-gazing shows and educational science parks for kids and families.  A must-visit for tourists and locals alike.  Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Jawaharlal_Nehru_Planetarium%2C_Bangalore.jpg/1024px-Jawaharlal_Nehru_Planetarium%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Jawaharlal_Nehru_Planetarium%2C_Bangalore_02.jpg/1280px-Jawaharlal_Nehru_Planetarium%2C_Bangalore_02.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Jawaharlal_Nehru_Planetarium%2C_Bangalore_40.jpg/1280px-Jawaharlal_Nehru_Planetarium%2C_Bangalore_40.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Jawaharlal_Nehru_Planetarium%2C_Bangalore_42.jpg/1280px-Jawaharlal_Nehru_Planetarium%2C_Bangalore_42.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Iconic experience! Spectacular views and great ambiance. Definitely check this out."
+    }
+  },
+  {
+    "id": 29,
+    "name": "Play Arena",
+    "zone": "East",
+    "lat": 12.9099,
+    "lng": 77.6821,
+    "rating": 4.3,
+    "reviews": 8000,
+    "fee": 500,
+    "hours": "11AM–11PM",
+    "category": "Adventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Go-Karting.jpg/1024px-Go-Karting.jpg",
+    "description": "A sprawling sports arena featuring go-karting, bowling, laser tag, and rock climbing.  Highly recommended by travel experts.  A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Go-Karting.jpg/1024px-Go-Karting.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/a/a7/Pandit_Udai_Mazumdar.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaves_from_an_Indian_jungle%3B_gathered_during_thirteen_years_of_a_jungle_life_in_the_central_provinces%2C_the_Deccan%2C_and_Berar_%28IA_leavesfromindian00glasrich%29.pdf/page1-797px-thumbnail.pdf.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Samaaj%2C_Sarkaar%2C_Bazaar._A_Citizen-First_Approach._By_Rohini_Nilekani.pdf/page1-839px-Samaaj%2C_Sarkaar%2C_Bazaar._A_Citizen-First_Approach._By_Rohini_Nilekani.pdf.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: A true hidden gem experience! An absolute delight to visit. A premium experience."
+    }
+  },
+  {
+    "id": 30,
+    "name": "Wonderla Amusement Park",
+    "zone": "West",
+    "lat": 12.8349,
+    "lng": 77.4009,
+    "rating": 4.5,
+    "reviews": 52000,
+    "fee": 900,
+    "hours": "11AM–6PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Wonderla_Bangalore.jpg/1024px-Wonderla_Bangalore.jpg",
+    "description": "High-thrill rides, water park attractions, and endless entertainment for all ages. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Wonderla_Bangalore.jpg/1024px-Wonderla_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Wonderla%2C_Bangalore_2.jpg/1280px-Wonderla%2C_Bangalore_2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Wonderla_Bangalore_BNC.jpg/1280px-Wonderla_Bangalore_BNC.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Wonderla%2C_Bangalore_IMG_5128_%287638928470%29.jpg/1280px-Wonderla%2C_Bangalore_IMG_5128_%287638928470%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: A must-see experience! An ideal place to spend your time."
+    }
+  },
+  {
+    "id": 31,
+    "name": "Commercial Street",
+    "zone": "Central",
+    "lat": 12.9822,
+    "lng": 77.6083,
+    "rating": 4.3,
+    "reviews": 65000,
+    "fee": 0,
+    "hours": "10:30AM–8PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Commercial_Street_Bangalore.jpg/1024px-Commercial_Street_Bangalore.jpg",
+    "description": "One of the oldest and busiest shopping streets in the city, famous for clothes, jewelry, and street shopping deals. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Absolutely breathtaking.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Commercial_Street_Bangalore.jpg/1024px-Commercial_Street_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Dharmaraya_Swamy_Temple_Bangalore_edit1.jpg/1280px-Dharmaraya_Swamy_Temple_Bangalore_edit1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Commercial_Street%2C_Bangalore%2C_India.jpg/1280px-Commercial_Street%2C_Bangalore%2C_India.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Commercial_Street%2C_Bangalore_%287870975840%29.jpg/1280px-Commercial_Street%2C_Bangalore_%287870975840%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Unforgettable experience! Perfect for enriching your Bangalore trip. Definitely check this out."
+    }
+  },
+  {
+    "id": 32,
+    "name": "UB City",
+    "zone": "Central",
+    "lat": 12.9719,
+    "lng": 77.596,
+    "rating": 4.5,
+    "reviews": 32000,
+    "fee": 0,
+    "hours": "11AM–11:30PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/UB_City_Mall_Bangalore.jpg/1024px-UB_City_Mall_Bangalore.jpg",
+    "description": "India's first luxury mall offering high-end luxury brand stores, fine dining rooftops, and stunning architecture. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A true gem of Bangalore. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/UB_City_Mall_Bangalore.jpg/1024px-UB_City_Mall_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/34/UB_City_Bangalore.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/6/60/UB_City_-_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/UB_Tower_as_seen_from_from_UB_City_mall.jpg/1280px-UB_Tower_as_seen_from_from_UB_City_mall.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Captivating experience! Truly captures the essence of the city."
+    }
+  },
+  {
+    "id": 33,
+    "name": "Innovative Film City",
+    "zone": "Day Trip",
+    "lat": 12.7562,
+    "lng": 77.3995,
+    "rating": 4.1,
+    "reviews": 18000,
+    "fee": 600,
+    "hours": "10AM–7PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Innovative_film_city.jpg/1024px-Innovative_film_city.jpg",
+    "description": "An Indian movie theme park with wax museums, reality show sets, and adventure sports. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Innovative_film_city.jpg/1024px-Innovative_film_city.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144140.jpg/1280px-Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144140.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144159.jpg/1280px-Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144159.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144958.jpg/1280px-Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144958.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Picturesque experience! You simply cannot miss experiencing this. A premium experience."
+    }
+  },
+  {
+    "id": 34,
+    "name": "Lumbini Gardens",
+    "zone": "North",
+    "lat": 13.0423,
+    "lng": 77.608,
+    "rating": 4,
+    "reviews": 14000,
+    "fee": 50,
+    "hours": "11AM–7PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lumbini_Gardens%2C_Nagawara_Lake%2C_Bangalore.jpg/1024px-Lumbini_Gardens%2C_Nagawara_Lake%2C_Bangalore.jpg",
+    "description": "A fun eco-friendly public park around Nagawara Lake with wave pools and boating. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Offers a serene escape from the city noise. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lumbini_Gardens%2C_Nagawara_Lake%2C_Bangalore.jpg/1024px-Lumbini_Gardens%2C_Nagawara_Lake%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lumbini_gardens.jpg/1280px-Lumbini_gardens.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/IBM_Manyata_office_-_View_from_Lumbini_garden_3.JPG/1280px-IBM_Manyata_office_-_View_from_Lumbini_garden_3.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Lumbini_garden_%2C_Hebbal%2C_Bangalore_3001.JPG/1280px-Lumbini_garden_%2C_Hebbal%2C_Bangalore_3001.JPG"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Majestic experience! Offers a deeply rewarding experience. Definitely check this out."
+    }
+  },
+  {
+    "id": 35,
+    "name": "Shivaji Nagar",
+    "zone": "Central",
+    "lat": 12.9856,
+    "lng": 77.6045,
+    "rating": 4.2,
+    "reviews": 20000,
+    "fee": 0,
+    "hours": "9AM–10PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Russell_Market_Bangalore.jpg/1024px-Russell_Market_Bangalore.jpg",
+    "description": "A bustling, vibrant marketplace spanning Russell Market. Legendary for Ramzan street food, amazing kebabs, and thrift shopping. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Russell_Market_Bangalore.jpg/1024px-Russell_Market_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Side_view_of_Shivaji_Nagar_metro_station_illuminated.jpg/1280px-Side_view_of_Shivaji_Nagar_metro_station_illuminated.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/View_of_Gate_1_of_Shivaji_Nagar_metro_station.jpg/1280px-View_of_Gate_1_of_Shivaji_Nagar_metro_station.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/WIP_of_Shivaji_Nagar_metro_station_gate_3_construction.jpg/1280px-WIP_of_Shivaji_Nagar_metro_station_gate_3_construction.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Spectacular experience! Highly recommended by locals."
+    }
+  },
+  {
+    "id": 36,
+    "name": "Brigade Road",
+    "zone": "Central",
+    "lat": 12.9723,
+    "lng": 77.6053,
+    "rating": 4.5,
+    "reviews": 30000,
+    "fee": 0,
+    "hours": "10AM–11PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Brigade_Road_Bangalore.jpg/1024px-Brigade_Road_Bangalore.jpg",
+    "description": "The premier high-street destination of Bangalore. Packed with international brands, historic pubs, and massive New Year celebrations. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Absolutely breathtaking.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Brigade_Road_Bangalore.jpg/1024px-Brigade_Road_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Brigade_Road%2C_Bangalore_%28346711598%29.jpg/1280px-Brigade_Road%2C_Bangalore_%28346711598%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Brigade_Road_facing_MG_Road.jpg/1280px-Brigade_Road_facing_MG_Road.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Brigade_Road%2C_Bangalore_at_night_%282024%29_01.jpg/1280px-Brigade_Road%2C_Bangalore_at_night_%282024%29_01.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Enchanting experience! A fantastic destination for memory-making."
+    }
+  },
+  {
+    "id": 37,
+    "name": "Church Street",
+    "zone": "Central",
+    "lat": 12.9752,
+    "lng": 77.6045,
+    "rating": 4.6,
+    "reviews": 25000,
+    "fee": 0,
+    "hours": "10AM–11:30PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Matteo_Coffea_Church_Street.jpg/1024px-Matteo_Coffea_Church_Street.jpg",
+    "description": "A pedestrian-friendly cobblestone street famous for its massive bookstores (Blossom), microbreweries, and cafe culture. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Offers a serene escape from the city noise. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Absolutely breathtaking.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Matteo_Coffea_Church_Street.jpg/1024px-Matteo_Coffea_Church_Street.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Bangalore_Church_street_trees_1.jpg/1280px-Bangalore_Church_street_trees_1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Bangalore_Church_street_trees_3.jpg/1280px-Bangalore_Church_street_trees_3.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Church_Street_in_night%2C_Bangalore_%282022%29.jpg/1280px-Church_Street_in_night%2C_Bangalore_%282022%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Fascinating experience! A top-tier spot for your itinerary. Definitely check this out."
+    }
+  },
+  {
+    "id": 38,
+    "name": "VV Puram Food Street",
+    "zone": "South",
+    "lat": 12.9525,
+    "lng": 77.5756,
+    "rating": 4.4,
+    "reviews": 18000,
+    "fee": 0,
+    "hours": "6PM–11:30PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/V._V._Puram_Food_Street.jpg/1024px-V._V._Puram_Food_Street.jpg",
+    "description": "Thindi Beedi (Food Street) is a strictly vegetarian paradise serving legendary dosas, floating pani puris, and holige. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Highly recommended by travel experts. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Highly recommended by travel experts.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/V._V._Puram_Food_Street.jpg/1024px-V._V._Puram_Food_Street.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Avarebele_Dose_-_VV_Puram_Food_Street%2C_Bangalore_-_Karnataka_-_PXL5960.jpg/1280px-Avarebele_Dose_-_VV_Puram_Food_Street%2C_Bangalore_-_Karnataka_-_PXL5960.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Kach_Dabeli_-_VV_Puram_Food_Street%2C_Bangalore_-_Karnataka_-_PXL5846.jpg/1280px-Kach_Dabeli_-_VV_Puram_Food_Street%2C_Bangalore_-_Karnataka_-_PXL5846.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pheni_with_Badam_Milk_-_VV_Puram_Food_Street%2C_Bangalore_-_Karnataka_-_PXL4222.jpg/1280px-Pheni_with_Badam_Milk_-_VV_Puram_Food_Street%2C_Bangalore_-_Karnataka_-_PXL4222.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Exquisite experience! One of the best experiences the city offers."
+    }
+  },
+  {
+    "id": 39,
+    "name": "Phoenix Marketcity",
+    "zone": "East",
+    "lat": 12.996,
+    "lng": 77.6953,
+    "rating": 4.6,
+    "reviews": 85000,
+    "fee": 0,
+    "hours": "10:30AM–10PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Phoenix_MarketCity_Bangalore.jpg/1024px-Phoenix_MarketCity_Bangalore.jpg",
+    "description": "One of the largest lifestyle and entertainment malls in Bangalore, hosting major concerts in its courtyard. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Rich in history and culture. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Phoenix_MarketCity_Bangalore.jpg/1024px-Phoenix_MarketCity_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Phoenix_Marketcity_Bangalore_IMG_5288_%287870487204%29.jpg/1280px-Phoenix_Marketcity_Bangalore_IMG_5288_%287870487204%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Phoenix_Marketcity_Bangalore_IMG_5326_%287870619462%29.jpg/1280px-Phoenix_Marketcity_Bangalore_IMG_5326_%287870619462%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Phoenix_Marketcity_Bangalore_IMG_5329_%287870629426%29.jpg/1280px-Phoenix_Marketcity_Bangalore_IMG_5329_%287870629426%29.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Phenomenal experience! A place that truly lives up to its hype."
+    }
+  },
+  {
+    "id": 40,
+    "name": "Orion Mall",
+    "zone": "West",
+    "lat": 13.0112,
+    "lng": 77.5546,
+    "rating": 4.6,
+    "reviews": 60000,
+    "fee": 0,
+    "hours": "10AM–10PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Orion_Mall_Night_View.jpg/1024px-Orion_Mall_Night_View.jpg",
+    "description": "A stunning lakeside mall offering a premium multiplex, diverse food court, and beautiful water fountains. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Rich in history and culture. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Orion_Mall_Night_View.jpg/1024px-Orion_Mall_Night_View.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Orion_mall_Bangalore_2013-11-08_07-58.JPG/1280px-Orion_mall_Bangalore_2013-11-08_07-58.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Orion_Mall%2C_Rajajinagar%2C_Bangalore_%282025%29_58.jpg/1280px-Orion_Mall%2C_Rajajinagar%2C_Bangalore_%282025%29_58.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Orion_Mall%2C_Rajajinagar%2C_Bangalore_%282025%29_75.jpg/1280px-Orion_Mall%2C_Rajajinagar%2C_Bangalore_%282025%29_75.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Inspiring experience! A wonderful escape from the ordinary. Definitely check this out."
+    }
+  },
+  {
+    "id": 41,
+    "name": "Mantri Square",
+    "zone": "West",
+    "lat": 12.9926,
+    "lng": 77.5714,
+    "rating": 4.3,
+    "reviews": 50000,
+    "fee": 0,
+    "hours": "10AM–10PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Mantri_Square_Mall.jpg/1024px-Mantri_Square_Mall.jpg",
+    "description": "A colossal shopping mall with a direct metro station connection, massive hypermarket, and numerous dining options. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Offers a serene escape from the city noise. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Mantri_Square_Mall.jpg/1024px-Mantri_Square_Mall.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Mantri_Square_Sampige_Road_Metro-Platform_View1.jpg/1280px-Mantri_Square_Sampige_Road_Metro-Platform_View1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Mantri_Square%2C_Malleshwaram%2C_Bangalore_%282025%29_02.jpg/1280px-Mantri_Square%2C_Malleshwaram%2C_Bangalore_%282025%29_02.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Mantri_Square%2C_Malleshwaram%2C_Bangalore_%282025%29_03.jpg/1280px-Mantri_Square%2C_Malleshwaram%2C_Bangalore_%282025%29_03.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Incredible experience! Make sure your camera is fully charged! A premium experience."
+    }
+  },
+  {
+    "id": 42,
+    "name": "Forum Mall Koramangala",
+    "zone": "South",
+    "lat": 12.9345,
+    "lng": 77.6111,
+    "rating": 4.4,
+    "reviews": 45000,
+    "fee": 0,
+    "hours": "10AM–10PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Forum_Mall_Koramangala_Bangalore.jpg/1024px-Forum_Mall_Koramangala_Bangalore.jpg",
+    "description": "One of the oldest modern malls in Bangalore featuring the landmark Landmark bookstore and PVR multiplex. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Rich in history and culture. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Forum_Mall_Koramangala_Bangalore.jpg/1024px-Forum_Mall_Koramangala_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Forum_Mall_Bangalore_Koramangala_4822.JPG/1280px-Forum_Mall_Bangalore_Koramangala_4822.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Forum_Mall_Bangalore_Koramangala_4823.JPG/1280px-Forum_Mall_Bangalore_Koramangala_4823.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Forum_Mall_Bangalore_Koramangala_4824.JPG/1280px-Forum_Mall_Bangalore_Koramangala_4824.JPG"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Stunning experience! Guaranteed to leave you amazed."
+    }
+  },
+  {
+    "id": 43,
+    "name": "Indiranagar 100 Ft Road",
+    "zone": "East",
+    "lat": 12.9784,
+    "lng": 77.6408,
+    "rating": 4.5,
+    "reviews": 20000,
+    "fee": 0,
+    "hours": "10AM–11:30PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Toit_Brewpub_Indiranagar.jpg/1024px-Toit_Brewpub_Indiranagar.jpg",
+    "description": "The heart of Bangalore's nightlife. A long vibrant street lined with the city's best microbreweries, restobars, and chic boutiques. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike. Ranked among the highest-rated spots in the city.  Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Toit_Brewpub_Indiranagar.jpg/1024px-Toit_Brewpub_Indiranagar.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Jack_%26_Jones_store.jpg/1280px-Jack_%26_Jones_store.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Breathtaking experience! Spectacular views and great ambiance. Definitely check this out."
+    }
+  },
+  {
+    "id": 44,
+    "name": "Snow City",
+    "zone": "North",
+    "lat": 13.0132,
+    "lng": 77.5925,
+    "rating": 3.9,
+    "reviews": 14000,
+    "fee": 600,
+    "hours": "10AM–8PM",
+    "category": "Entertainment",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Snow_city_bangalore.jpg/1024px-Snow_city_bangalore.jpg",
+    "description": "An indoor sub-zero theme park offering snow slides, snowball fights, and 9D cinema. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. Highly recommended by travel experts. Guaranteed to provide hours of fun, vibrant energy, and unforgettable memories. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Snow_city_bangalore.jpg/1024px-Snow_city_bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144907.jpg/1280px-Snap_from_Wax_Museum_at_Innovative_Film_city_Bangalore_144907.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/War_verse_%28IA_warverse01foxc%29.pdf/page1-833px-War_verse_%28IA_warverse01foxc%29.pdf.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/The_Riks%2C_or%2C_Primeval_gleams_of_light_and_life_%28IA_riksorprimevalgl00paraiala%29.pdf/page1-589px-The_Riks%2C_or%2C_Primeval_gleams_of_light_and_life_%28IA_riksorprimevalgl00paraiala%29.pdf.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-warning",
+      "text": "AI VERDICT: Serene experience! An absolute delight to visit."
+    }
+  },
+  {
+    "id": 45,
+    "name": "Nandi Hills",
+    "zone": "Day Trip",
+    "lat": 13.3839,
+    "lng": 77.6833,
+    "rating": 4.6,
+    "reviews": 45000,
+    "fee": 5,
+    "hours": "Best at sunrise",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nandi_Hills_Karnataka.jpg/1024px-Nandi_Hills_Karnataka.jpg",
+    "description": "An ancient hill fortress offering breathtaking sunrise views, misty cool weather, and ancient temples at the peak. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Perfect for a weekend outing. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nandi_Hills_Karnataka.jpg/1024px-Nandi_Hills_Karnataka.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Sunrise_%40_Nandi_Hills%2C_Bangalore%2C_India.jpg/1280px-Sunrise_%40_Nandi_Hills%2C_Bangalore%2C_India.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Prestige_Golfshire_Resort.jpg/1280px-Prestige_Golfshire_Resort.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Image_of_Chrysocoris_stollii_taken_at_Nandi_Hills_Bangalore.jpg/1280px-Image_of_Chrysocoris_stollii_taken_at_Nandi_Hills_Bangalore.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Vibrant experience! An ideal place to spend your time. A premium experience."
+    }
+  },
+  {
+    "id": 46,
+    "name": "Muthyala Maduvu (Pearl Valley)",
+    "zone": "Day Trip",
+    "lat": 12.7226,
+    "lng": 77.6715,
+    "rating": 4.1,
+    "reviews": 6500,
+    "fee": 10,
+    "hours": "8AM–5PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Muthyala_Maduvu_Falls.jpg/1024px-Muthyala_Maduvu_Falls.jpg",
+    "description": "A lush ravine with a waterfall that looks like drops of pearls. It is famous for weekend trekking and picnics. A tranquil environment making it a perfect getaway for nature lovers. Perfect for a weekend outing. A tranquil environment making it a perfect getaway for nature lovers. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Muthyala_Maduvu_Falls.jpg/1024px-Muthyala_Maduvu_Falls.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Aadhaar_Bangalore_flood.jpg/1280px-Aadhaar_Bangalore_flood.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Caifish-1-nature_aquarium-J_P_Nagar-bangalore-India.jpg/1280px-Caifish-1-nature_aquarium-J_P_Nagar-bangalore-India.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Red_Dahlia_flowers%2C_216th_flower_show_2024%2C_Lalbagh%2C_Bangalore_186.jpg/1280px-Red_Dahlia_flowers%2C_216th_flower_show_2024%2C_Lalbagh%2C_Bangalore_186.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Historic experience! Perfect for enriching your Bangalore trip. Definitely check this out."
+    }
+  },
+  {
+    "id": 47,
+    "name": "Skandagiri Hills",
+    "zone": "Day Trip",
+    "lat": 13.4173,
+    "lng": 77.6835,
+    "rating": 4.5,
+    "reviews": 8000,
+    "fee": 250,
+    "hours": "Night trek entry 4AM",
+    "category": "Adventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Skandagiri_Sunrise.jpg/1024px-Skandagiri_Sunrise.jpg",
+    "description": "A towering mountain fortress famous for its spectacular night treks that culminate in a sunrise above the clouds. Ranked among the highest-rated spots in the city. Rich in history and culture. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Skandagiri_Sunrise.jpg/1024px-Skandagiri_Sunrise.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Heavenly_Sunny.jpg/1280px-Heavenly_Sunny.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/9/98/Kummaul_Ghur_of_Calaramconda_-_British_Library_X378%2812%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chikkaballapura_KSRTC_BUS_Station_Karnataka.webm/1024px--Chikkaballapura_KSRTC_BUS_Station_Karnataka.webm.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Magnificent experience! Truly captures the essence of the city."
+    }
+  },
+  {
+    "id": 48,
+    "name": "Shivanasamudra Falls",
+    "zone": "Day Trip",
+    "lat": 12.2982,
+    "lng": 77.1704,
+    "rating": 4.7,
+    "reviews": 15000,
+    "fee": 0,
+    "hours": "8AM–5PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Shivanasamudra_Falls_Gaganachukki.jpg/1024px-Shivanasamudra_Falls_Gaganachukki.jpg",
+    "description": "A magnificent segmented waterfall plunging over 300 feet, featuring the Gaganachukki and Bharachukki cascades. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. A true gem of Bangalore. Ranked among the highest-rated spots in the city.  A tranquil environment making it a perfect getaway for nature lovers. Highly recommended by travel experts.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Shivanasamudra_Falls_Gaganachukki.jpg/1024px-Shivanasamudra_Falls_Gaganachukki.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Bharachukki_falls.jpg/1280px-Bharachukki_falls.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/ShivanasamudraFalls_7660.JPG/1280px-ShivanasamudraFalls_7660.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/During_Sunrise.jpg/1280px-During_Sunrise.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Iconic experience! You simply cannot miss experiencing this."
+    }
+  },
+  {
+    "id": 49,
+    "name": "Bheemeshwari Nature Camp",
+    "zone": "Day Trip",
+    "lat": 12.3167,
+    "lng": 77.2667,
+    "rating": 4.3,
+    "reviews": 4000,
+    "fee": 1500,
+    "hours": "Day trip packages",
+    "category": "Adventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bheemeshwari_Fishing_Camp.jpg/1024px-Bheemeshwari_Fishing_Camp.jpg",
+    "description": "An eco-tourism hub on the Cauvery river offering coracle rides, zip-lining, and fishing for the mighty Mahseer.  Highly recommended by travel experts.  Absolutely breathtaking.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bheemeshwari_Fishing_Camp.jpg/1024px-Bheemeshwari_Fishing_Camp.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Aquarium_Paradise%2C_Bangalore_%282025%29_09.jpg/1280px-Aquarium_Paradise%2C_Bangalore_%282025%29_09.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Aquarium_Paradise%2C_Bangalore_%282025%29_30.jpg/1280px-Aquarium_Paradise%2C_Bangalore_%282025%29_30.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Aquarium_Paradise%2C_Bangalore_%282025%29_80.jpg/1280px-Aquarium_Paradise%2C_Bangalore_%282025%29_80.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: A true hidden gem experience! Offers a deeply rewarding experience. Definitely check this out."
+    }
+  },
+  {
+    "id": 50,
+    "name": "Ramanagara Silk City",
+    "zone": "Day Trip",
+    "lat": 12.715,
+    "lng": 77.2811,
+    "rating": 4.2,
+    "reviews": 5500,
+    "fee": 0,
+    "hours": "Daytime",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Ramanagara_Hills.jpg/1024px-Ramanagara_Hills.jpg",
+    "description": "Famous as the filming location for 'Sholay'. Beautiful rocky terrain mixed with enormous active silk markets. Steeped in centuries of fascinating history and architectural brilliance. Highly recommended by travel experts. Steeped in centuries of fascinating history and architectural brilliance. A true gem of Bangalore.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Ramanagara_Hills.jpg/1024px-Ramanagara_Hills.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Rangoli_Gardens%2C_Jakkur%2C_Bangalore_%282024%29_81.jpg/1280px-Rangoli_Gardens%2C_Jakkur%2C_Bangalore_%282024%29_81.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Rangoli_Gardens%2C_Jakkur%2C_Bangalore_%282024%29_237.jpg/1280px-Rangoli_Gardens%2C_Jakkur%2C_Bangalore_%282024%29_237.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Rangoli_Gardens%2C_Jakkur%2C_Bangalore_%282024%29_294.jpg/1280px-Rangoli_Gardens%2C_Jakkur%2C_Bangalore_%282024%29_294.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: A must-see experience! Highly recommended by locals."
+    }
+  },
+  {
+    "id": 51,
+    "name": "Chunchi Falls",
+    "zone": "Day Trip",
+    "lat": 12.3685,
+    "lng": 77.4527,
+    "rating": 4.3,
+    "reviews": 6200,
+    "fee": 0,
+    "hours": "8AM–5PM",
+    "category": "Nature",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chunchi_Falls.jpg/1024px-Chunchi_Falls.jpg",
+    "description": "A scenic cascading waterfall nestled amongst rocky hills and deep gorges, perfect for photography. A tranquil environment making it a perfect getaway for nature lovers. A must-visit for tourists and locals alike. A tranquil environment making it a perfect getaway for nature lovers. Absolutely breathtaking.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chunchi_Falls.jpg/1024px-Chunchi_Falls.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Chunchi_Waterfalls%2C_Karnataka%2C_India.jpg/1280px-Chunchi_Waterfalls%2C_Karnataka%2C_India.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Unforgettable experience! A fantastic destination for memory-making."
+    }
+  },
+  {
+    "id": 52,
+    "name": "Lepakshi Temple",
+    "zone": "Day Trip",
+    "lat": 13.8016,
+    "lng": 77.5996,
+    "rating": 4.8,
+    "reviews": 11000,
+    "fee": 0,
+    "hours": "6AM–6PM",
+    "category": "Heritage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Veerabhadra_Temple%2C_Lepakshi.jpg/1024px-Veerabhadra_Temple%2C_Lepakshi.jpg",
+    "description": "Features the mysterious hanging pillar, spectacular Vijayanagara architectural carvings, and India's largest monolithic Nandi. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. Absolutely breathtaking. Ranked among the highest-rated spots in the city.  Steeped in centuries of fascinating history and architectural brilliance. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Veerabhadra_Temple%2C_Lepakshi.jpg/1024px-Veerabhadra_Temple%2C_Lepakshi.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/e/e2/World_largest_Nandi_statue.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Temple_Lepakshi.jpg/1280px-Temple_Lepakshi.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Naga_Linga_Lepakshi_Temple_%28111337455%29.jpeg/1280px-Naga_Linga_Lepakshi_Temple_%28111337455%29.jpeg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Captivating experience! A top-tier spot for your itinerary. Definitely check this out."
+    }
+  },
+  {
+    "id": 53,
+    "name": "Savandurga Hill",
+    "zone": "Day Trip",
+    "lat": 12.9197,
+    "lng": 77.2934,
+    "rating": 4.5,
+    "reviews": 9000,
+    "fee": 0,
+    "hours": "Sunrise to Sunset",
+    "category": "Adventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Savandurga_Hill.jpg/1024px-Savandurga_Hill.jpg",
+    "description": "Rising to 1,226 meters, it is considered among the largest monolith hills in Asia. Highly popular for rigorous trekking. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise. Ranked among the highest-rated spots in the city. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Savandurga_Hill.jpg/1024px-Savandurga_Hill.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/2/2c/Savandurga.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Savandurga_Hill_01.jpg/1280px-Savandurga_Hill_01.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Savandurga_Hill_02.jpg/1280px-Savandurga_Hill_02.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Picturesque experience! One of the best experiences the city offers. A premium experience."
+    }
+  },
+  {
+    "id": 54,
+    "name": "Microlight Flying Jakkur",
+    "zone": "North",
+    "lat": 13.0768,
+    "lng": 77.6015,
+    "rating": 4.8,
+    "reviews": 2000,
+    "fee": 3500,
+    "hours": "Weekends 7AM-10AM",
+    "category": "Adventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Microlight_Jakkur.jpg/1024px-Microlight_Jakkur.jpg",
+    "description": "Experience an exhilarating 10-minute co-pilot flight soaring thousands of feet above Bangalore city. Ranked among the highest-rated spots in the city. A true gem of Bangalore. Ranked among the highest-rated spots in the city. Rich in history and culture.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Microlight_Jakkur.jpg/1024px-Microlight_Jakkur.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Microlight_Flying_Aerosport_in_Bangalore_2020_BanBanjara.jpg/1280px-Microlight_Flying_Aerosport_in_Bangalore_2020_BanBanjara.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Majestic experience! A place that truly lives up to its hype."
+    }
+  },
+  {
+    "id": 55,
+    "name": "Jamia Masjid",
+    "zone": "Central",
+    "lat": 12.9644,
+    "lng": 77.575,
+    "rating": 4.6,
+    "reviews": 8500,
+    "fee": 0,
+    "hours": "5AM–9PM",
+    "category": "Mosque",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Jamia_Masjid_Bangalore.jpg/1024px-Jamia_Masjid_Bangalore.jpg",
+    "description": "The largest mosque in Bangalore, built in the 1940s, known for its stunning white marble facade and capacity to hold 10,000 worshippers. Ranked among the highest-rated spots in the city. Highly recommended by travel experts. Ranked among the highest-rated spots in the city. A must-visit for tourists and locals alike.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Jamia_Masjid_Bangalore.jpg/1024px-Jamia_Masjid_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Jama_Masjid_Bangalore_01.jpg/1280px-Jama_Masjid_Bangalore_01.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Jama_Masjid_Bangalore_03.jpg/1280px-Jama_Masjid_Bangalore_03.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Jama_Masjid_Bangalore_02.jpg/1280px-Jama_Masjid_Bangalore_02.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Spectacular experience! A wonderful escape from the ordinary. Definitely check this out."
+    }
+  },
+  {
+    "id": 56,
+    "name": "Holy Trinity Church",
+    "zone": "East",
+    "lat": 12.9733,
+    "lng": 77.6166,
+    "rating": 4.5,
+    "reviews": 6200,
+    "fee": 0,
+    "hours": "9AM–6PM",
+    "category": "Church",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Holy_Trinity_Church_Bangalore.jpg/1024px-Holy_Trinity_Church_Bangalore.jpg",
+    "description": "A major landmark built in 1851 in English Renaissance style, featuring magnificent stained glass from London. Ranked among the highest-rated spots in the city. Highly recommended by travel experts. Ranked among the highest-rated spots in the city. Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Holy_Trinity_Church_Bangalore.jpg/1024px-Holy_Trinity_Church_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Holy_Trinity_Church_Bangalore_Entrance.jpg/1280px-Holy_Trinity_Church_Bangalore_Entrance.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Holy_Trinity_Church%2C_Bangalore_Inside.jpg/1280px-Holy_Trinity_Church%2C_Bangalore_Inside.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Holy_Trinity_Church%2C_Bangalore_%28around_1895%29%2C_by_J_H_Furneaux.jpg/1280px-Holy_Trinity_Church%2C_Bangalore_%28around_1895%29%2C_by_J_H_Furneaux.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Enchanting experience! Make sure your camera is fully charged!"
+    }
+  },
+  {
+    "id": 57,
+    "name": "Shri Someshwara Swamy Temple",
+    "zone": "East",
+    "lat": 12.9738,
+    "lng": 77.6254,
+    "rating": 4.6,
+    "reviews": 9000,
+    "fee": 0,
+    "hours": "6AM–12PM, 5PM–9PM",
+    "category": "Temple",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Someshwara_Temple_Ulsoor.jpg/1024px-Someshwara_Temple_Ulsoor.jpg",
+    "description": "One of the oldest temples in the city, dating back to the Chola period, dedicated to Lord Shiva. Ranked among the highest-rated spots in the city. Rich in history and culture. Ranked among the highest-rated spots in the city. Perfect for a weekend outing.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Someshwara_Temple_Ulsoor.jpg/1024px-Someshwara_Temple_Ulsoor.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Dharmaraya_Swamy_Temple_Bangalore.jpg/1280px-Dharmaraya_Swamy_Temple_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Dharmaraya_Swamy_Temple_Bangalore_edit1.jpg/1280px-Dharmaraya_Swamy_Temple_Bangalore_edit1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Sri_Rajarajeshwari_Temple_%2C_Bangalore_._04.jpg/1280px-Sri_Rajarajeshwari_Temple_%2C_Bangalore_._04.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-excellent",
+      "text": "AI VERDICT: Fascinating experience! Guaranteed to leave you amazed. A premium experience."
+    }
+  },
+  {
+    "id": 58,
+    "name": "Mecca Masjid",
+    "zone": "South",
+    "lat": 12.92,
+    "lng": 77.59,
+    "rating": 4.4,
+    "reviews": 4000,
+    "fee": 0,
+    "hours": "Open 24 hours",
+    "category": "Mosque",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/1024px-Vidhan_Soudha%2C_Bangalore.jpg",
+    "description": "A beautifully architectured mosque located in the heart of the city providing a peaceful environment for prayers.  Highly recommended by travel experts.  Offers a serene escape from the city noise.",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/1024px-Vidhan_Soudha%2C_Bangalore.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bangalore_Fort_Delhi_Gate.jpg/1024px-Bangalore_Fort_Delhi_Gate.jpg"
+    ],
+    "customAIVerdict": {
+      "className": "ai-good",
+      "text": "AI VERDICT: Exquisite experience! Spectacular views and great ambiance. Definitely check this out."
+    }
+  }
+];
+
+const manualLocations = {
+  Koramangala: { lat: 12.9279, lng: 77.6271 },
+  Whitefield: { lat: 12.9698, lng: 77.7499 },
+  Indiranagar: { lat: 12.9784, lng: 77.6408 },
+  Jayanagar: { lat: 12.9299, lng: 77.5826 },
+  Rajajinagar: { lat: 12.9982, lng: 77.5530 }
+};
+
+let userLocation = null;
+let currentView = 'cards';
+let map = null;
+let markersLayer = null;
+let userMarker = null;
+
+const state = {
+  search: '',
+  category: 'All',
+  zone: 'All',
+  sort: 'rating',
+  itinerary: [],
+  aiMode: false
+};
+
+const DOMElements = {
+  cardsContainer: document.getElementById('cards-container'),
+  mapContainer: document.getElementById('map-container'),
+  dashboardContainer: document.getElementById('dashboard-container'),
+  dashboardStats: document.getElementById('dashboard-stats'),
+  dashboardList: document.getElementById('dashboard-list'),
+  locationStatus: document.getElementById('location-status'),
+  btnRefreshLocation: document.getElementById('btn-refresh-location'),
+  dropdownFallback: document.getElementById('dropdown-fallback'),
+  searchInput: document.getElementById('search-input'),
+  categoryFilter: document.getElementById('category-filter'),
+  zoneFilter: document.getElementById('zone-filter'),
+  sortFilter: document.getElementById('sort-filter'),
+  btnToggleView: document.getElementById('btn-toggle-view'),
+  errorBox: document.getElementById('location-error'),
+  loadingSpinner: document.getElementById('loading-spinner')
+};
+
+// Category Icons matching
+const categoryIcons = {
+  'Mosque': '🕌',
+  'Temple': '🕉️',
+  'Church': '⛪',
+  'Heritage': '🏛️',
+  'Nature': '🌳',
+  'Education': '🔭',
+  'Adventure': '🐅',
+  'Entertainment': '🎢',
+  'All': '📍'
+};
+
+const zoneColors = {
+  'North': 'zone-north',
+  'Central': 'zone-central',
+  'East': 'zone-east',
+  'South': 'zone-south',
+  'West': 'zone-west',
+  'Day Trip': 'zone-daytrip'
+};
+
+// Initialize the app
+function init() {
+  attachEventListeners();
+  render();
+  requestUserLocation();
+  
+  // Failsafe for geolocation hanging
+  setTimeout(() => {
+    if (DOMElements.locationStatus.textContent === 'Fetching location...') {
+      DOMElements.locationStatus.textContent = 'Location timed out. Select manually.';
+      DOMElements.loadingSpinner.style.display = 'none';
+      DOMElements.errorBox.style.display = 'flex';
+      if (state.sort === 'nearest') {
+        DOMElements.sortFilter.value = 'rating';
+        state.sort = 'rating';
+      }
+      render();
+    }
+  }, 11000);
+}
+
+// Event Listeners
+function attachEventListeners() {
+  DOMElements.searchInput.addEventListener('input', (e) => {
+    state.search = e.target.value.toLowerCase();
+    render();
+  });
+  DOMElements.categoryFilter.addEventListener('change', (e) => {
+    state.category = e.target.value;
+    render();
+  });
+  DOMElements.zoneFilter.addEventListener('change', (e) => {
+    state.zone = e.target.value;
+    render();
+  });
+  DOMElements.sortFilter.addEventListener('change', (e) => {
+    state.sort = e.target.value;
+    render();
+  });
+  DOMElements.btnRefreshLocation.addEventListener('click', requestUserLocation);
+  DOMElements.dropdownFallback.addEventListener('change', handleManualLocation);
+  DOMElements.btnToggleView.addEventListener('click', toggleView);
+  
+  const btnDashboard = document.getElementById('btn-toggle-dashboard');
+  if (btnDashboard) {
+    btnDashboard.addEventListener('click', toggleDashboard);
+  }
+  
+  const btnAI = document.getElementById('btn-toggle-ai');
+  if(btnAI) {
+    btnAI.addEventListener('change', (e) => {
+      state.aiMode = e.target.checked;
+      renderCards(fetchProcessedPlaces());
+    });
+  }
+  
+  // Login Modal
+  const btnLogin = document.getElementById('btn-login');
+  const loginModal = document.getElementById('login-modal');
+  const btnCloseLogin = document.getElementById('btn-close-login');
+  
+  if (btnLogin && loginModal && btnCloseLogin) {
+    btnLogin.addEventListener('click', () => {
+      loginModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    btnCloseLogin.addEventListener('click', () => {
+      loginModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    loginModal.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        loginModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+}
+
+// Geolocation
+function requestUserLocation() {
+  DOMElements.locationStatus.textContent = 'Fetching location...';
+  DOMElements.loadingSpinner.style.display = 'inline-block';
+  DOMElements.errorBox.style.display = 'none';
+
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        DOMElements.locationStatus.textContent = '📍 Location Available';
+        DOMElements.loadingSpinner.style.display = 'none';
+        
+        // Use Nearest First as default when location available
+        DOMElements.sortFilter.value = 'nearest';
+        state.sort = 'nearest';
+        
+        updateMapUserLocation();
+        render();
+      },
+      (error) => {
+        console.warn("Geolocation error:", error);
+        DOMElements.locationStatus.textContent = 'Location denied / unavailable';
+        DOMElements.loadingSpinner.style.display = 'none';
+        DOMElements.errorBox.style.display = 'flex';
+        
+        // Fallback sort if it was nearest
+        if (state.sort === 'nearest') {
+          DOMElements.sortFilter.value = 'rating';
+          state.sort = 'rating';
+        }
+        render();
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  } else {
+    DOMElements.locationStatus.textContent = 'Geolocation not supported';
+    DOMElements.loadingSpinner.style.display = 'none';
+    DOMElements.errorBox.style.display = 'flex';
+  }
+}
+
+function handleManualLocation(e) {
+  const selectedArea = e.target.value;
+  if (!selectedArea) return;
+
+  userLocation = manualLocations[selectedArea];
+  DOMElements.locationStatus.textContent = `📍 Location Set: ${selectedArea}`;
+  DOMElements.errorBox.style.display = 'none';
+  
+  if(state.sort !== 'nearest') {
+    DOMElements.sortFilter.value = 'nearest';
+    state.sort = 'nearest';
+  }
+  
+  updateMapUserLocation();
+  render();
+}
+
+// Math Utility
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
+
+function fetchProcessedPlaces() {
+  let processed = [...places];
+
+  // 1. Calculate distances and costs
+  if (userLocation) {
+    processed = processed.map(place => {
+      const distance = calculateDistance(userLocation.lat, userLocation.lng, place.lat, place.lng);
+      const autoCost = Math.max(50, Math.round(distance * 15));
+      const cabCost = Math.max(100, Math.round(distance * 14));
+      return { ...place, distance, autoCost, cabCost };
+    });
+  }
+
+  // 2. Filter
+  if (state.search) {
+    processed = processed.filter(p => p.name.toLowerCase().includes(state.search) || p.category.toLowerCase().includes(state.search));
+  }
+  if (state.category !== 'All') {
+    processed = processed.filter(p => p.category === state.category);
+  }
+  if (state.zone !== 'All') {
+    processed = processed.filter(p => p.zone === state.zone);
+  }
+
+  // 3. Sort
+  processed.sort((a, b) => {
+    if (state.sort === 'nearest') {
+      return (a.distance || 0) - (b.distance || 0);
+    } else if (state.sort === 'rating') {
+      return b.rating - a.rating; // Highest rating first
+    } else if (state.sort === 'zone') {
+      return a.zone.localeCompare(b.zone);
+    } else if (state.sort === 'fee') {
+      return a.fee - b.fee;
+    }
+    return 0;
+  });
+
+  return processed;
+}
+
+// Rendering
+function render() {
+  const data = fetchProcessedPlaces();
+  if (currentView === 'cards') {
+    renderCards(data);
+  } else {
+    updateMapData(data);
+  }
+}
+
+function renderStarRating(rating) {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+  
+  let starsHTML = '';
+  for(let i=0; i<fullStars; i++) starsHTML += '<i class="fas fa-star text-warning"></i>';
+  if(halfStar) starsHTML += '<i class="fas fa-star-half-alt text-warning"></i>';
+  for(let i=0; i<emptyStars; i++) starsHTML += '<i class="far fa-star text-warning"></i>';
+  
+  return starsHTML;
+}
+
+function renderCards(data) {
+  DOMElements.cardsContainer.innerHTML = '';
+  if(data.length === 0) {
+    DOMElements.cardsContainer.innerHTML = `<div class="no-results">No places match your criteria. 😢</div>`;
+    return;
+  }
+
+  // Find closest place for Proximity Banner
+  let closestPlaceId = null;
+  if (userLocation && data.length > 0 && state.sort !== 'nearest') {
+    let minDistance = Infinity;
+    data.forEach(p => {
+      if (p.distance && p.distance < minDistance) {
+        minDistance = p.distance;
+        closestPlaceId = p.id;
+      }
+    });
+  }
+
+  data.forEach((place, index) => {
+    const card = document.createElement('div');
+    card.className = 'place-card';
+    card.style.animationDelay = `${index * 0.05}s`;
+
+    const icon = categoryIcons[place.category] || categoryIcons['All'];
+    const zoneClass = zoneColors[place.zone] || '';
+    
+    let proximityBanner = '';
+    if (closestPlaceId === place.id && place.distance) {
+      proximityBanner = `<div class="proximity-banner">📍 Nearest to You! (${place.distance.toFixed(1)} km)</div>`;
+    }
+
+    let distanceTag = '';
+    let rideButtons = '';
+    
+    if (place.distance !== undefined) {
+      distanceTag = `
+        <div class="distance-tag">
+          📍 ${place.distance.toFixed(1)} km away — Auto ~₹${place.autoCost} | Cab ~₹${place.cabCost}
+        </div>
+      `;
+      
+      const uberLink = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${place.lat}&dropoff[longitude]=${place.lng}&dropoff[nickname]=${encodeURIComponent(place.name)}`;
+      
+      // Use Android Intent URIs to force Ola and Rapido to open their native apps if installed.
+      // If not installed, the browser will attempt to resolve the fallback URL (if provided) or prompt.
+      const olaLink = `intent://olacabs.com/book?drop_lat=${place.lat}&drop_lng=${place.lng}&drop_name=${encodeURIComponent(place.name)}#Intent;scheme=ola;package=com.olacabs.customer;end`;
+      
+      // Rapido's exact intent schema structure for drop-offs
+      const rapidoLink = `intent://#Intent;scheme=rapido;package=com.rapido.passenger;action=android.intent.action.VIEW;end`;
+
+      rideButtons = `
+        <div class="ride-buttons">
+          <p class="ride-title">Book a Ride:</p>
+          <div class="ride-links">
+            <a href="${uberLink}" target="_blank" class="btn-ride btn-uber"><i class="fab fa-uber"></i> Uber</a>
+            <a href="${olaLink}" target="_blank" class="btn-ride btn-ola">Ola</a>
+            <a href="${rapidoLink}" target="_blank" class="btn-ride btn-rapido">Rapido</a>
+          </div>
+        </div>
+      `;
+    }
+
+    const priceHTML = place.fee === 0 
+      ? `<span class="free-badge">FREE ENTRY</span>` 
+      : `<span class="fee-text">₹${place.fee} Entry</span>`;
+      
+    // AI Verdict Logic
+    let aiVerdictHTML = '';
+    if (state.aiMode) {
+      let verdictObj = getAIVerdict(place);
+      aiVerdictHTML = `
+        <div class="ai-verdict-box ${verdictObj.className}">
+          <div class="ai-header"><i class="fas fa-robot"></i> AI Verdict</div>
+          <p>${verdictObj.text}</p>
+        </div>
+      `;
+    }
+
+    const inItinerary = state.itinerary.includes(place.id);
+    const itineraryBtnText = inItinerary ? '<i class="fas fa-check"></i> Added' : '<i class="fas fa-plus"></i> Add to Dashboard';
+    const itineraryBtnClass = inItinerary ? 'btn-itinerary active' : 'btn-itinerary';
+
+    card.innerHTML = `
+      <div class="card-image-wrapper">
+        ${proximityBanner}
+        <img src="${place.image}" referrerpolicy="no-referrer" alt="${place.name}" loading="lazy" class="card-image" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/1024px-Vidhan_Soudha%2C_Bangalore.jpg';" onclick="openModal(${place.id})">
+        <div class="card-badges-top">
+          <span class="zone-badge ${zoneClass}">${place.zone}</span>
+          <span class="category-badge">${icon} ${place.category}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">${place.name}</h3>
+        <p class="card-desc">${place.description}</p>
+        
+        <div class="card-meta">
+          <div class="meta-item">
+            <i class="far fa-clock"></i> ${place.hours}
+          </div>
+          <div class="meta-item price-item">
+            ${priceHTML}
+          </div>
+        </div>
+        
+        <div class="rating-box">
+          <span class="stars">${renderStarRating(place.rating)}</span>
+          <span class="rating-text">${place.rating} (${place.reviews > 1000 ? (place.reviews/1000).toFixed(1)+'k' : place.reviews} reviews)</span>
+        </div>
+        
+        ${aiVerdictHTML}
+
+        ${distanceTag}
+        ${rideButtons}
+        <button class="${itineraryBtnClass}" onclick="toggleItinerary(${place.id}, event)">${itineraryBtnText}</button>
+      </div>
+    `;
+    DOMElements.cardsContainer.appendChild(card);
+  });
+}
+
+function getAIVerdict(place) {
+  let score = 0;
+  
+  if (place.rating >= 4.5) score += 2;
+  else if (place.rating >= 4.0) score += 1;
+  
+  if (place.fee === 0) score += 2;
+  else if (place.fee <= 100) score += 1;
+  
+  if (place.distance) {
+    if (place.distance < 5) score += 2;
+    else if (place.distance < 15) score += 1;
+  }
+  
+  if (score >= 5) {
+    return { className: 'ai-excellent', text: "Absolute must-visit! Highly rated, budget-friendly, and highly accessible." };
+  } else if (score >= 3) {
+    return { className: 'ai-good', text: "Great choice for a day out. Solid ratings and reasonable logistics." };
+  } else {
+    return { className: 'ai-warning', text: "Might require some planning. Prepare for travel time or entry fees, but still highly iconic!" };
+  }
+}
+
+// Dashboard Logic
+function toggleItinerary(id, event) {
+  if (event) {
+    event.stopPropagation();
+  }
+  
+  const index = state.itinerary.indexOf(id);
+  if (index > -1) {
+    state.itinerary.splice(index, 1);
+  } else {
+    state.itinerary.push(id);
+  }
+  
+  render();
+  if (currentView === 'dashboard') {
+    renderDashboard();
+  }
+}
+
+function calculateDashboardStats() {
+  const data = fetchProcessedPlaces();
+  const selectedPlaces = data.filter(p => state.itinerary.includes(p.id));
+  
+  let totalDistance = 0;
+  let totalFee = 0;
+  let totalAutoCost = 0;
+  
+  selectedPlaces.forEach(p => {
+    totalDistance += p.distance || 0;
+    totalFee += p.fee || 0;
+    totalAutoCost += p.autoCost || 0;
+  });
+  
+  // Assume generic 20km/h traffic speed for Bangalore logic
+  const travelHours = totalDistance / 20; 
+  const totalTimeStr = travelHours > 0 ? `${Math.floor(travelHours)}h ${Math.round((travelHours % 1)*60)}m` : '0m';
+
+  return {
+    count: selectedPlaces.length,
+    distance: totalDistance.toFixed(1),
+    fee: totalFee,
+    autoCost: totalAutoCost,
+    totalBudget: totalFee + totalAutoCost,
+    travelTime: totalTimeStr,
+    places: selectedPlaces
+  };
+}
+
+function renderDashboard() {
+  const stats = calculateDashboardStats();
+  
+  DOMElements.dashboardStats.innerHTML = `
+    <div class="stat-box">
+      <i class="fas fa-map-marker-alt"></i>
+      <div class="stat-val">${stats.count}</div>
+      <div class="stat-label">Places Selected</div>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-rupee-sign"></i>
+      <div class="stat-val">₹${stats.totalBudget}</div>
+      <div class="stat-label">Est. Total Cost<br><small>(Entry ₹${stats.fee} + Auto ~₹${stats.autoCost})</small></div>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-route"></i>
+      <div class="stat-val">${stats.distance} km</div>
+      <div class="stat-label">Total Est. Distance</div>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-hourglass-half"></i>
+      <div class="stat-val">${stats.travelTime}</div>
+      <div class="stat-label">Est. Travel Time<br><small>(@20km/h traffic)</small></div>
+    </div>
+  `;
+  
+  DOMElements.dashboardList.innerHTML = '';
+  if (stats.places.length === 0) {
+    DOMElements.dashboardList.innerHTML = '<div class="no-results">Your dashboard is empty. Go add some places! 🎒</div>';
+    return;
+  }
+  
+  stats.places.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'dashboard-item';
+    item.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/320px-Vidhan_Soudha%2C_Bangalore.jpg';">
+      <div class="dash-item-info">
+        <h4>${p.name}</h4>
+        <p>Entry: ${p.fee === 0 ? 'Free' : '₹'+p.fee}</p>
+        <p>${p.distance ? '📍 ' + p.distance.toFixed(1) + ' km away' : ''}</p>
+      </div>
+      <button class="btn-remove" onclick="toggleItinerary(${p.id})"><i class="fas fa-times"></i></button>
+    `;
+    DOMElements.dashboardList.appendChild(item);
+  });
+}
+
+function toggleDashboard() {
+  const btnDashboard = document.getElementById('btn-toggle-dashboard');
+  if (currentView !== 'dashboard') {
+    currentView = 'dashboard';
+    DOMElements.cardsContainer.style.display = 'none';
+    DOMElements.mapContainer.style.display = 'none';
+    DOMElements.dashboardContainer.style.display = 'block';
+    btnDashboard.classList.add('active');
+    if(DOMElements.btnToggleView) DOMElements.btnToggleView.classList.remove('active');
+    renderDashboard();
+  } else {
+    currentView = 'cards';
+    DOMElements.dashboardContainer.style.display = 'none';
+    DOMElements.mapContainer.style.display = 'none';
+    DOMElements.cardsContainer.style.display = 'grid';
+    btnDashboard.classList.remove('active');
+    DOMElements.btnToggleView.innerHTML = '<i class="fas fa-map-marked-alt"></i> Map View';
+    renderCards(fetchProcessedPlaces());
+  }
+}
+
+// Map View Functions
+function toggleView() {
+  const btnDashboard = document.getElementById('btn-toggle-dashboard');
+
+  if (currentView === 'cards' || currentView === 'dashboard') {
+    currentView = 'map';
+    DOMElements.btnToggleView.innerHTML = '<i class="fas fa-th-large"></i> Card View';
+    DOMElements.cardsContainer.style.display = 'none';
+    DOMElements.dashboardContainer.style.display = 'none';
+    if(btnDashboard) btnDashboard.classList.remove('active');
+    
+    DOMElements.mapContainer.style.display = 'block';
+    
+    if (!map) {
+      initMap();
+    }
+    
+    // Slight delay to ensure DOM updates before leaflet invalidates size
+    setTimeout(() => {
+      map.invalidateSize();
+      updateMapData(fetchProcessedPlaces());
+      updateMapUserLocation();
+    }, 100);
+    
+  } else {
+    currentView = 'cards';
+    DOMElements.btnToggleView.innerHTML = '<i class="fas fa-map-marked-alt"></i> Map View';
+    DOMElements.mapContainer.style.display = 'none';
+    DOMElements.cardsContainer.style.display = 'grid';
+    renderCards(fetchProcessedPlaces());
+  }
+}
+
+function initMap() {
+  map = L.map('map-container').setView([12.9716, 77.5946], 11); // Center of Bangalore
+  
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(map);
+
+  markersLayer = L.layerGroup().addTo(map);
+}
+
+function updateMapData(data) {
+  if (!map || !markersLayer) return;
+  
+  markersLayer.clearLayers();
+  
+  const bounds = [];
+  
+  data.forEach(place => {
+    const iconHTML = `<div class="custom-marker">${categoryIcons[place.category] || '📍'}</div>`;
+    const customIcon = L.divIcon({
+      html: iconHTML,
+      className: 'custom-leaflet-marker',
+      iconSize: [36, 36],
+      iconAnchor: [18, 36],
+      popupAnchor: [0, -36]
+    });
+
+    let popupContent = `
+      <div class="map-popup">
+        <h4>${place.name}</h4>
+        <p class="popup-zone">${place.zone}</p>
+        <p>${place.rating} ⭐ (${place.reviews} rev)</p>
+    `;
+    
+    if (place.distance !== undefined) {
+      popupContent += `<p class="popup-dist">📍 ${place.distance.toFixed(1)} km away</p>`;
+    }
+    
+    popupContent += `</div>`;
+
+    const marker = L.marker([place.lat, place.lng], { icon: customIcon })
+      .bindPopup(popupContent);
+      
+    markersLayer.addLayer(marker);
+    bounds.push([place.lat, place.lng]);
+  });
+  
+  // Also include user location in bounds if exists
+  if (userLocation) {
+    bounds.push([userLocation.lat, userLocation.lng]);
+  }
+
+  if (bounds.length > 0) {
+    map.fitBounds(L.latLngBounds(bounds), { padding: [50, 50] });
+  }
+}
+
+function updateMapUserLocation() {
+  if (!map || !userLocation) return;
+  
+  if (userMarker) {
+    userMarker.setLatLng([userLocation.lat, userLocation.lng]);
+  } else {
+    // Create blue pulsing dot
+    const userIcon = L.divIcon({
+      className: 'user-location-marker',
+      html: '<div class="pulse-dot"></div>',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
+    });
+    userMarker = L.marker([userLocation.lat, userLocation.lng], { icon: userIcon, zIndexOffset: 1000 }).addTo(map);
+    userMarker.bindPopup('<div class="map-popup" style="font-weight:bold;">Your Location</div>');
+  }
+}
+
+// Modal Logic
+function openModal(id) {
+  const place = places.find(p => p.id === id);
+  if (!place) return;
+  
+  const modalOverlay = document.getElementById('detailed-modal');
+  const contentArea = document.getElementById('modal-content-area');
+  
+  let thumbnailsHTML = '';
+  if (place.images && place.images.length > 0) {
+    place.images.forEach((imgSrc, idx) => {
+      thumbnailsHTML += `<img src="${imgSrc}" class="${idx === 0 ? 'active' : ''}" onclick="changeGalleryImage(this, '${imgSrc}')" referrerpolicy="no-referrer">`;
+    });
+  }
+  
+  let aiVerdictHTML = '';
+  if (state.aiMode) {
+    let verdictObj = getAIVerdict(place);
+    aiVerdictHTML = `
+      <div class="ai-verdict-box ${verdictObj.className}" style="margin-top: 0">
+        <div class="ai-header"><i class="fas fa-robot"></i> AI Verdict</div>
+        <p>${verdictObj.text}</p>
+      </div>
+    `;
+  }
+  
+  let distanceHtml = place.distance ? `<p style="font-weight: bold; color: var(--secondary); margin-bottom: 10px;">📍 ${place.distance.toFixed(1)} km away — Auto ~₹${place.autoCost} | Cab ~₹${place.cabCost}</p>` : '';
+
+  contentArea.innerHTML = `
+    <div class="modal-body">
+      <div class="modal-gallery">
+        <img src="${place.images && place.images.length > 0 ? place.images[0] : place.image}" id="gallery-main-img" class="gallery-main" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vidhan_Soudha%2C_Bangalore.jpg/1024px-Vidhan_Soudha%2C_Bangalore.jpg';">
+        <div class="gallery-thumbnails">
+          ${thumbnailsHTML}
+        </div>
+      </div>
+      
+      <h2>${place.name}</h2>
+      
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+        <span class="category-badge">${categoryIcons[place.category] || '📍'} ${place.category}</span>
+        <span class="zone-badge ${zoneColors[place.zone] || ''}">${place.zone}</span>
+        <span class="rating-text" style="background:#f1f1f1; padding:4px 8px; border-radius:12px; font-weight:bold; font-size: 0.85rem;"><i class="fas fa-star text-warning"></i> ${place.rating} (${(place.reviews > 1000 ? (place.reviews/1000).toFixed(1)+'k' : place.reviews)} rev)</span>
+        <span class="fee-text" style="background:${place.fee === 0 ? '#e8f5e9' : '#fff3e0'}; padding:4px 8px; border-radius:12px; font-weight:bold; font-size: 0.85rem; color:${place.fee === 0 ? '#2e7d32' : '#e65100'};">${place.fee === 0 ? 'FREE ENTRY' : '₹'+place.fee+' Entry'}</span>
+      </div>
+      
+      ${aiVerdictHTML}
+      ${distanceHtml}
+      
+      <div class="modal-description">
+        ${place.description || 'A beautiful attraction in Bangalore.'}
+      </div>
+      
+      <div class="meta-item" style="font-weight: 600; font-size: 0.95rem;">
+        <i class="far fa-clock"></i> Timings: ${place.hours}
+      </div>
+    </div>
+  `;
+  
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function changeGalleryImage(thumbnailElement, src) {
+  const mainImg = document.getElementById('gallery-main-img');
+  mainImg.src = src;
+  
+  const thumbnails = document.querySelectorAll('.gallery-thumbnails img');
+  thumbnails.forEach(img => img.classList.remove('active'));
+  thumbnailElement.classList.add('active');
+}
+
+// Close Modal Logic
+document.getElementById('btn-close-modal').addEventListener('click', () => {
+  document.getElementById('detailed-modal').classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+document.getElementById('detailed-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'detailed-modal') {
+    e.target.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+// Run app
+document.addEventListener('DOMContentLoaded', init);
+
+// Authentication Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const loginModal = document.getElementById('login-modal');
+  const btnLogin = document.getElementById('btn-login');
+  
+  const loginBox = document.getElementById('login-box');
+  const signupBox = document.getElementById('signup-box');
+  const linkSignup = document.getElementById('link-signup');
+  const linkLogin = document.getElementById('link-login');
+  const toggleToLogin = document.getElementById('toggle-to-login');
+  const toggleToSignup = document.getElementById('toggle-to-signup');
+
+  // Show login modal if not logged in
+  if (!localStorage.getItem('explore_blr_logged_in')) {
+    loginModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    btnLogin.innerHTML = '<i class="fas fa-sign-out-alt"></i> Log Out';
+  }
+
+  // Header login/logout button
+  btnLogin.addEventListener('click', () => {
+    if (localStorage.getItem('explore_blr_logged_in')) {
+      localStorage.removeItem('explore_blr_logged_in');
+      location.reload();
+    } else {
+      loginModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Toggle between Login and Signup
+  linkSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginBox.style.display = 'none';
+    signupBox.style.display = 'block';
+    toggleToSignup.style.display = 'none';
+    toggleToLogin.style.display = 'block';
+  });
+
+  linkLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    signupBox.style.display = 'none';
+    loginBox.style.display = 'block';
+    toggleToLogin.style.display = 'none';
+    toggleToSignup.style.display = 'block';
+  });
+
+  // Handle successful login action
+  const doLogin = (btnElement, originalText) => {
+    btnElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+    // Simulate network delay
+    setTimeout(() => {
+      localStorage.setItem('explore_blr_logged_in', 'true');
+      loginModal.classList.remove('active');
+      document.body.style.overflow = '';
+      btnLogin.innerHTML = '<i class="fas fa-sign-out-alt"></i> Log Out';
+      if (btnElement) btnElement.innerHTML = originalText;
+    }, 1200);
+  };
+
+  // Forms submission
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    doLogin(btn, 'Log in');
+  });
+
+  document.getElementById('signup-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    doLogin(btn, 'Sign up');
+  });
+
+  // Social Buttons
+  const socialBtns = document.querySelectorAll('.social-btn');
+  socialBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      doLogin(btn, btn.innerHTML);
+    });
+  });
+});

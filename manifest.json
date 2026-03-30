@@ -1,0 +1,28 @@
+{
+    "name": "Explore Bangalore",
+    "short_name": "ExploreBLR",
+    "description": "Discover 120+ amazing places in Bangalore. Temples, parks, palaces, restaurants and more with maps, fare estimates, and AI recommendations.",
+    "start_url": "/app.html",
+    "display": "standalone",
+    "background_color": "#0a0e1a",
+    "theme_color": "#0a0e1a",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["travel", "navigation", "lifestyle"],
+    "lang": "en",
+    "dir": "ltr"
+}
