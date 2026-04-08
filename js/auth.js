@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleFormLink = document.getElementById('toggle-form');
     const authSubtitle = document.getElementById('auth-subtitle');
     const noticeMsg = document.getElementById('notice-msg');
+    const formOptions = document.querySelector('.form-options');
+    const rememberMe = document.getElementById('remember');
     
     let isLogin = true;
 
@@ -38,11 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
             authSubtitle.innerText = 'Welcome back! Please login to your account.';
             toggleFormLink.innerText = 'Sign Up';
             toggleFormLink.parentElement.firstChild.nodeValue = "Don't have an account? ";
+            formOptions.style.display = 'flex';
         } else {
             btnText.innerText = 'Sign Up';
             authSubtitle.innerText = 'Create a new account to explore Bangalore.';
             toggleFormLink.innerText = 'Login';
             toggleFormLink.parentElement.firstChild.nodeValue = "Already have an account? ";
+            formOptions.style.display = 'none';
         }
         noticeMsg.classList.add('hidden');
     });
@@ -80,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnText.classList.remove('hidden');
                 spinner.classList.add('hidden');
                 submitBtn.disabled = false;
+                
+                const storage = rememberMe && rememberMe.checked ? localStorage : sessionStorage;
 
                 if (isLogin) {
                     // Check valid credentials + local storage dynamic accounts
@@ -89,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const user = allUsers.find(u => u.email.toLowerCase() === emailVal && u.password === passVal);
                     
                     if (user) {
-                        localStorage.setItem('ebUser', JSON.stringify({ email: user.email }));
+                        storage.setItem('ebUser', JSON.stringify({ email: user.email }));
                         window.location.href = 'app.html';
                     } else {
                         showNotice('Invalid email or password.', true);
@@ -102,17 +108,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         localAccounts.push({ email: emailVal, password: passVal });
                         localStorage.setItem('ebAccounts', JSON.stringify(localAccounts));
-                        localStorage.setItem('ebUser', JSON.stringify({ email: emailVal }));
+                        storage.setItem('ebUser', JSON.stringify({ email: emailVal }));
                         window.location.href = 'app.html';
                     }
                 }
-            }, 1500); // 1.5s timeout requirement
+            }, 1000); 
         }
     });
 
     document.getElementById('forgot-password').addEventListener('click', (e) => {
         e.preventDefault();
-        showNotice('A password reset link has been sent to your email.');
+        const emailVal = emailInput.value.trim().toLowerCase();
+        if (!emailVal) {
+            showNotice('Please enter your email to reset password.', true);
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailVal)) {
+            showNotice('Please enter a valid email.', true);
+            return;
+        }
+
+        const localAccounts = JSON.parse(localStorage.getItem('ebAccounts') || '[]');
+        const allUsers = [...validUsers, ...localAccounts];
+        const userExists = allUsers.find(u => u.email.toLowerCase() === emailVal);
+
+        if (userExists) {
+            showNotice('A password reset link has been sent to your email.');
+        } else {
+            showNotice('No account found with this email.', true);
+        }
     });
 
     function showNotice(msg, isError = false) {
@@ -144,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('ebUser');
+            sessionStorage.removeItem('ebUser');
             window.location.href = 'index.html';
         });
     }
