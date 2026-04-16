@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Bangalore — Discover the Garden City</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="orb-3"></div>
+
+    <header class="sticky-header">
+        <div class="header-content">
+            <h1 class="logo-font">Explore <span class="accent">Bangalore</span></h1>
+            <div class="header-actions">
+                <div class="ai-toggle-group">
+                    <label class="switch">
+                      <input type="checkbox" id="ai-toggle">
+                      <span class="slider round"></span>
+                    </label>
+                    <span class="ai-label">AI Assist <i class="fas fa-sparkles"></i></span>
+                </div>
+                <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="map-section">
+            <div class="map-controls">
+                <button id="my-location-btn" class="btn-location"><i class="fas fa-location-arrow"></i> My Location</button>
+            </div>
+            <div id="map" style="height:450px;width:100%;"></div>
+        </section>
+
+        <section class="filters-section">
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search 120+ places...">
+                </div>
+                <select id="category-filter">
+                    <option value="All">All Categories</option>
+                    <option value="Parks">Parks & Gardens</option>
+                    <option value="Palaces">Palaces</option>
+                    <option value="Temples">Temples</option>
+                    <option value="Mosques">Mosques</option>
+                    <option value="Lakes">Lakes</option>
+                    <option value="Malls">Malls</option>
+                    <option value="Museums">Museums</option>
+                    <option value="Markets">Markets</option>
+                    <option value="Attractions">Attractions</option>
+                    <option value="Day Trip">Day Trips</option>
+                    <option value="Landmarks">Landmarks</option>
+                    <option value="Heritage">Heritage</option>
+                    <option value="Restaurants">Restaurants</option>
+                </select>
+                <select id="zone-filter">
+                    <option value="All">All Zones</option>
+                    <option value="Central">Central</option>
+                    <option value="South">South</option>
+                    <option value="North">North</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="Day Trip">Day Trip</option>
+                </select>
+                <select id="sort-select">
+                    <option value="default">Sort By</option>
+                    <option value="rating">Highest Rating</option>
+                    <option value="distance">Nearest</option>
+                    <option value="name">Name (A-Z)</option>
+                </select>
+                <button id="clear-filters-btn" class="btn-secondary"><i class="fas fa-times"></i> Clear</button>
+            </div>
+            <div class="results-info">
+                <p id="results-count">Showing 120 of 120 places</p>
+            </div>
+        </section>
+
+        <section class="places-section">
+            <div id="cards-grid" class="cards-grid"></div>
+        </section>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts (no auth.js - handled natively) -->
+    <script src="js/places.js"></script>
+    <script src="js/images.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/ai.js"></script>
+
+    <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        var header = document.querySelector('.sticky-header');
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(10,14,26,0.98)';
+            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
+        } else {
+            header.style.background = '';
+            header.style.boxShadow = '';
+        }
+    });
+    </script>
+</body>
+</html>
