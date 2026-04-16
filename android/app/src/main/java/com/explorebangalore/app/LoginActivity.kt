@@ -217,7 +217,7 @@ class LoginActivity : AppCompatActivity() {
         accounts.forEach {
             val obj = JSONObject()
             obj.put("email", it.first)
-            obj.put("password", it.second)
+            obj.put("password", "hidden")
             arr.put(obj)
         }
         prefs.edit().putString("local_accounts", arr.toString()).apply()
