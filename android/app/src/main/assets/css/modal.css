@@ -1,0 +1,155 @@
+/* css/modal.css — Final */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: #111627;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    position: relative;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: scale(0.95);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-close:hover {
+    background: #f0b429;
+    color: #0a0e1a;
+}
+
+.modal-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.modal-details {
+    padding: 28px;
+}
+
+.modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+    color: #f0b429;
+}
+
+.modal-category {
+    display: inline-block;
+    padding: 5px 14px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    color: #aaa;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.info-item i {
+    color: #f0b429;
+    width: 20px;
+    text-align: center;
+}
+
+.modal-desc {
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 18px;
+}
+
+.fare-box {
+    background: rgba(10, 14, 26, 0.8);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 14px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fare-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fare-title {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.fare-price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #f0b429;
+}
+
+@media (max-width: 500px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        width: 95%;
+        border-radius: 14px;
+    }
+}
